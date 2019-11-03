@@ -1,0 +1,11 @@
+# ipv4
+iptables -N kde-connect
+iptables -A INPUT -j kde-connect
+iptables -A kde-connect -p udp -m udp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A kde-connect -p tcp -m tcp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+# ipv6
+ip6tables -N kde-connect
+ip6tables -A INPUT -j kde-connect
+ip6tables -A kde-connect -p udp -m udp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
+ip6tables -A kde-connect -p tcp -m tcp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT

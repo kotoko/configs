@@ -1,0 +1,11 @@
+# ipv4
+iptables -N syncthing
+iptables -A INPUT -j syncthing
+iptables -A syncthing -p tcp -m tcp --dport 22000 -j ACCEPT
+iptables -A syncthing -p udp -m udp --dport 21027 -j ACCEPT
+
+# ipv6
+ip6tables -N syncthing
+ip6tables -A INPUT -j syncthing
+ip6tables -A syncthing -p tcp -m tcp --dport 22000 -j ACCEPT
+ip6tables -A syncthing -p udp -m udp --dport 21027 -j ACCEPT
