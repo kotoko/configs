@@ -1,0 +1,4 @@
+# ...
+
+[ "$SSH_TTY" != "" ] && [ "$STY" == "" ] && echo Waiting... && sleep 1 && screen -D -R -S SESSION && exit
+
