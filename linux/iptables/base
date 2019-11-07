@@ -1,0 +1,57 @@
+# ipv4
+iptables -N ipv4
+iptables -N icmp-accept
+iptables -N icmp-echo
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -j ipv4
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -j DROP
+iptables -A icmp-echo -m recent --update --seconds 3 --hitcount 100 --rttl --name icmp_echo_sub_4 --mask 255.255.255.0 --rsource -j DROP
+iptables -A icmp-echo -m recent --update --seconds 1 --hitcount 10 --rttl --name icmp_echo_ip_4 --mask 255.255.255.255 --rsource -j DROP
+iptables -A icmp-echo -m recent --set --name icmp_echo_sub_4 --mask 255.255.255.0 --rsource
+iptables -A icmp-echo -m recent --set --name icmp_echo_ip_4 --mask 255.255.255.255 --rsource
+iptables -A icmp-echo -m limit --limit 1000/sec -j ACCEPT
+iptables -A icmp-echo -j DROP
+iptables -A icmp-accept -m limit --limit 1000/sec -j ACCEPT
+iptables -A icmp-accept -j DROP
+iptables -A ipv4 -p icmp -m icmp --icmp-type 8 -j icmp-echo
+iptables -A ipv4 -p icmp -j icmp-accept
+iptables -A ipv4 -p udp -m udp --sport 67 --dport 68 -j ACCEPT
+
+# ipv6
+ip6tables -N ipv6
+ip6tables -N icmp-accept
+ip6tables -N icmp-echo
+ip6tables -A INPUT -i lo -j ACCEPT
+ip6tables -A INPUT -j ipv6
+ip6tables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+ip6tables -A INPUT -j DROP
+ip6tables -A icmp-echo -m recent --update --seconds 3 --hitcount 100 --rttl --name icmp_echo_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource -j DROP
+ip6tables -A icmp-echo -m recent --update --seconds 1 --hitcount 10 --rttl --name icmp_echo_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource -j DROP
+ip6tables -A icmp-echo -m recent --set --name icmp_echo_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource
+ip6tables -A icmp-echo -m recent --set --name icmp_echo_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource
+ip6tables -A icmp-echo -m limit --limit 1000/sec -j ACCEPT
+ip6tables -A icmp-echo -j DROP
+ip6tables -A icmp-accept -m limit --limit 1000/sec -j ACCEPT
+ip6tables -A icmp-accept -j DROP
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 1 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 2 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 3 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 4 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 128 -j icmp-echo
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 133 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 134 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 135 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 136 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 141 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 142 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 130 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 131 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 132 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 143 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 148 -j icmp-accept
+ip6tables -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 149 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 151 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 152 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 153 -j icmp-accept
+ip6tables -A ipv6 -s fe80::/10 -p udp -m udp --sport 547 --dport 546 -j ACCEPT
