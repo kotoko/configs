@@ -1,0 +1,17 @@
+startup_message off
+vbell           off
+defscrollback   8192
+autodetach      on
+multiuser on
+nonblock on
+defutf8 on
+altscreen on
+msgwait 5
+defshell '/bin/bash'
+
+# Be able to scroll output buffer with mouse wheel.
+#termcapinfo xterm* ti@:te@
+
+hardstatus on
+hardstatus alwayslastline '%{= kG}%{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}%{= kW} %=%1`   %c:%s'
+
