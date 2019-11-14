@@ -1,12 +1,12 @@
 # https://serverfault.com/a/911286
 
 # ipv4
-ipset create ssdp4 hash:ip,port timeout 3
+ipset create ssdp4 hash:ip,port timeout 3 family inet
 iptables -A INPUT -p udp -m set --match-set ssdp4 dst,dst -j ACCEPT
 iptables -A OUTPUT -d 239.255.255.250/32 -p udp -m udp --dport 1900 -j SET --add-set ssdp4 src,src --exist
 
 # ipv6
-ipset create ssdp6 hash:ip,port timeout 3
+ipset create ssdp6 hash:ip,port timeout 3 family inet6
 ip6tables -A INPUT -p udp -m set --match-set ssdp6 dst,dst -j ACCEPT
 ip6tables -A OUTPUT -d ff02::c/128 -p udp -m udp --dport 1900 -j SET --add-set ssdp6 src,src --exist
 ip6tables -A OUTPUT -d ff05::c/128 -p udp -m udp --dport 1900 -j SET --add-set ssdp6 src,src --exist
