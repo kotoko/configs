@@ -7,7 +7,7 @@ iptables -A INPUT -p tcp -m tcp --dport 22 -j ssh
 iptables -A ssh -m set --match-set banned_ssh_ipv4 src -j DROP
 iptables -A ssh -j ssh-dos
 iptables -A ssh -j sshguard
-iptables -A ssh -p tcp -m tcp --dport 22 -j ACCEPT
+iptables -A ssh -j ACCEPT
 iptables -A ssh-dos -m state --state NEW -m recent --update --seconds 300 --hitcount 20 --name ssh_sub_4 --mask 255.255.255.0 --rsource -j DROP
 iptables -A ssh-dos -m state --state NEW -m recent --update --seconds 300 --hitcount 8 --name ssh_ip_4 --mask 255.255.255.255 --rsource -j DROP
 iptables -A ssh-dos -m state --state NEW -m recent --set --name ssh_sub_4 --mask 255.255.255.0 --rsource
@@ -22,7 +22,7 @@ ip6tables -A INPUT -p tcp -m tcp --dport 22 -j ssh
 ip6tables -A ssh -m set --match-set banned_ssh_ipv6 src -j DROP
 ip6tables -A ssh -j ssh-dos
 ip6tables -A ssh -j sshguard
-ip6tables -A ssh -p tcp -m tcp --dport 22 -j ACCEPT
+ip6tables -A ssh -j ACCEPT
 ip6tables -A ssh-dos -m state --state NEW -m recent --update --seconds 300 --hitcount 20 --name ssh_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource -j DROP
 ip6tables -A ssh-dos -m state --state NEW -m recent --update --seconds 300 --hitcount 8 --name ssh_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource -j DROP
 ip6tables -A ssh-dos -m state --state NEW -m recent --set --name ssh_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource
