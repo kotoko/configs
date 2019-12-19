@@ -1,0 +1,60 @@
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:icmp-accept - [0:0]
+:icmp-echo - [0:0]
+:ipv6 - [0:0]
+:kde-connect - [0:0]
+:ssh - [0:0]
+:ssh-dos - [0:0]
+[0:0] -A INPUT -i lo -j ACCEPT
+[0:0] -A INPUT -j ipv6
+[0:0] -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+[0:0] -A INPUT -j kde-connect
+[0:0] -A INPUT -p udp -m set --match-set ssdp6 dst,dst -j ACCEPT
+[0:0] -A INPUT -p tcp -m tcp --dport 22 -j ssh
+[0:0] -A INPUT -j DROP
+[0:0] -A OUTPUT -d ff02::c/128 -p udp -m udp --dport 1900 -j SET --add-set ssdp6 src,src --exist
+[0:0] -A OUTPUT -d ff05::c/128 -p udp -m udp --dport 1900 -j SET --add-set ssdp6 src,src --exist
+[0:0] -A OUTPUT -d ff08::c/128 -p udp -m udp --dport 1900 -j SET --add-set ssdp6 src,src --exist
+[0:0] -A OUTPUT -d ff0e::c/128 -p udp -m udp --dport 1900 -j SET --add-set ssdp6 src,src --exist
+[0:0] -A icmp-accept -m limit --limit 1000/sec -j ACCEPT
+[0:0] -A icmp-accept -j DROP
+[0:0] -A icmp-echo -m recent --update --seconds 3 --hitcount 100 --rttl --name icmp_echo_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource -j DROP
+[0:0] -A icmp-echo -m recent --update --seconds 1 --hitcount 10 --rttl --name icmp_echo_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource -j DROP
+[0:0] -A icmp-echo -m recent --set --name icmp_echo_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource
+[0:0] -A icmp-echo -m recent --set --name icmp_echo_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource
+[0:0] -A icmp-echo -m limit --limit 1000/sec -j ACCEPT
+[0:0] -A icmp-echo -j DROP
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 1 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 2 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 3 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 4 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 128 -j icmp-echo
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 133 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 134 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 135 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 136 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 141 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 142 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 130 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 131 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 132 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 143 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 148 -j icmp-accept
+[0:0] -A ipv6 -p ipv6-icmp -m icmp6 --icmpv6-type 149 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 151 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 152 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p ipv6-icmp -m icmp6 --icmpv6-type 153 -j icmp-accept
+[0:0] -A ipv6 -s fe80::/10 -p udp -m udp --sport 547 --dport 546 -j ACCEPT
+[0:0] -A kde-connect -p udp -m udp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
+[0:0] -A kde-connect -p tcp -m tcp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
+[0:0] -A ssh -m set --match-set sshguard6 src -j DROP
+[0:0] -A ssh -j ssh-dos
+[0:0] -A ssh -j ACCEPT
+[0:0] -A ssh-dos -m state --state NEW -m recent --update --seconds 300 --hitcount 20 --name ssh_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource -j DROP
+[0:0] -A ssh-dos -m state --state NEW -m recent --update --seconds 300 --hitcount 8 --name ssh_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource -j DROP
+[0:0] -A ssh-dos -m state --state NEW -m recent --set --name ssh_sub_6 --mask ffff:ffff:ffff:ffff:: --rsource
+[0:0] -A ssh-dos -m state --state NEW -m recent --set --name ssh_ip_6 --mask ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff --rsource
+COMMIT

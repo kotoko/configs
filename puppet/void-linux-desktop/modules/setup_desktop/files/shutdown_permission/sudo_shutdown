@@ -1,0 +1,3 @@
+%users ALL=(root) NOPASSWD:/sbin/halt
+%users ALL=(root) NOPASSWD:/sbin/reboot
+%users ALL=(root) NOPASSWD:/sbin/poweroff

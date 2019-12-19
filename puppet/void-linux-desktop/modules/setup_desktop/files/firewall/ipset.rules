@@ -1,0 +1,4 @@
+create -exist ssdp4 hash:ip,port family inet hashsize 1024 maxelem 65536 timeout 3
+create -exist sshguard4 hash:net family inet hashsize 1024 maxelem 65536
+create -exist ssdp6 hash:ip,port family inet6 hashsize 1024 maxelem 65536 timeout 3
+create -exist sshguard6 hash:net family inet6 hashsize 1024 maxelem 65536
