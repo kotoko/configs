@@ -1,7 +1,7 @@
 class setup_desktop::users (
 	Array[Tuple[String, String]] $users,
 ) {
-	$groups = ['audio', 'bluetooth', 'input', 'lp', 'lpadmin', 'network', 'plugdev', 'veracrypt', 'video', 'users']
+	$groups = ['audio', 'bluetooth', 'input', 'lp', 'lpadmin', 'network', 'plugdev', 'video', 'users']
 	$groups.each |String $group| {
 		group { $group:
 			ensure => 'present',

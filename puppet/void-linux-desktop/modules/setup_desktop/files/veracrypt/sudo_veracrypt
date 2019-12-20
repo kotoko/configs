@@ -1,1 +1,1 @@
-%veracrypt ALL=(root) NOPASSWD:/usr/bin/veracrypt
+%users ALL=(root) NOPASSWD:/usr/bin/veracrypt
