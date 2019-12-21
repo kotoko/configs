@@ -3,7 +3,7 @@ class udisks {
 	class { 'udisks::package': }
 	class { 'udisks::config': }
 
-	Class['polkit'] ->
+	Class['polkit::package'] ->
 	Class['udisks::package'] ->
 	Class['udisks::config']
 }

@@ -6,14 +6,14 @@ class shutdown_permission (
 	if $sudo {
 		class { 'shutdown_permission::sudo': }
 
-		Class['sudo'] ->
+		Class['sudo::package'] ->
 		Class['shutdown_permission::sudo']
 	}
 
 	if $polkit {
 		class { 'shutdown_permission::polkit': }
 
-		Class['polkit'] ->
+		Class['polkit::package'] ->
 		Class['shutdown_permission::polkit']
 	}
 }
