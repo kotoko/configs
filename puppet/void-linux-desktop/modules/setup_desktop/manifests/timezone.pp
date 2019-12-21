@@ -2,9 +2,9 @@
 class setup_desktop::timezone {
 	$tz = 'Europe/Warsaw'
 
-	file { "/usr/share/zoneinfo/${tz}":
+	file { '/etc/localtime':
 		ensure => 'link',
-		target => '/etc/localtime',
+		target => "/usr/share/zoneinfo/${tz}",
 		owner => 'root',
 		backup => false,
 	}
