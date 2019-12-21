@@ -1,13 +1,11 @@
 # Install system ntp client.
 class setup_desktop::ntp {
-	$pkg = 'chrony'
-
-	void::package { $pkg:
+	void::package { 'chrony':
 		ensure => 'installed',
 	}
 
-	void::service { $pkg:
+	void::service { 'chronyd':
 		enable => true,
-		require => Void::Package[$pkg],
+		require => Void::Package['chrony'],
 	}
 }
