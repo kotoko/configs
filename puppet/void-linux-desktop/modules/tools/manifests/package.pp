@@ -28,7 +28,6 @@ class tools::package {
 		'samba',
 		'simple-mtpfs',
 		'screen',
-		'sudo',
 		'tar',
 		'tree',
 		'udftools',

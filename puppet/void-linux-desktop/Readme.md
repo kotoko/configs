@@ -25,7 +25,7 @@ I am assuming that during running this script computer is connected to the inter
 4. Login as `root`.
 5. Copy files to the computer.
     * Edit users in the file `manifests/init.pp`.
-6. Run script: `bash run.sh | tee out.log`.
+6. Run script: `bash run.sh 2>&1 | tee out.log`.
     * During installation sddm will start. You can go back to the terminal with running script: `Ctrl` + `Alt` + `F2`.
     * After finishing you can read log from file `out.log`.
 7. Reboot.

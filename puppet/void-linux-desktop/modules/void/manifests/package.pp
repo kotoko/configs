@@ -10,5 +10,7 @@ define void::package (
 		exec { "xbps-remove ${pkg}":
 			command => "/usr/bin/yes y | /usr/bin/xbps-remove ${pkg}",
 		}
+	} else {
+		    fail('Unrecognized \'ensure\' value!')
 	}
 }

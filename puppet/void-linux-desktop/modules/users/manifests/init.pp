@@ -13,6 +13,7 @@ class users (
 	}
 
 	class { 'users::create_directories':
+		users => $users,
 		directories => $directories,
 	}
 
