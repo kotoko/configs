@@ -66,7 +66,6 @@ class setup_desktop::firewall {
 
 	# Load rules now.
 	exec { 'ipset_restore':
-		cwd => '/root',
 		command => '/sbin/ipset restore < /etc/ipset/ipset.rules',
 		require => [
 			Void::Package['ipset'],
@@ -75,7 +74,6 @@ class setup_desktop::firewall {
 	}
 
 	exec { 'ip6tables-restore':
-		cwd => '/root',
 		command => '/sbin/ip6tables-restore -c /etc/iptables/ip6tables.rules',
 		require => [
 			Void::Package['iptables'],
@@ -85,7 +83,6 @@ class setup_desktop::firewall {
 	}
 
 	exec { 'iptables-restore':
-		cwd => '/root',
 		command => '/sbin/iptables-restore -c /etc/iptables/iptables.rules',
 		require => [
 			Void::Package['iptables'],

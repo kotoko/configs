@@ -19,7 +19,6 @@ class setup_desktop::sddm {
 	}
 
 	exec { 'sddm_example_config':
-		cwd => '/root',
 		command => '/sbin/sddm --example-config > /etc/sddm.conf',
 		require => [
 			File['/etc/sddm.conf'],
@@ -29,7 +28,6 @@ class setup_desktop::sddm {
 
 	# Adjust sddm config with sed.
 	exec { 'sddm_config':
-		cwd => '/root',
 		command => '/sbin/sed -i -e "s/^\(Current=\).*$/\1breeze/" -e "s/^\(CursorTheme=\).*$/\1breeze_cursors/" -e "s/^\(RememberLastUser=\).*$/\1true/" -e "s/^\(RememberLastSession=\).*$/\1true/" -e "s/^\(ReuseSession=\).*$/\1true/" -e "s/^\(EnableAvatars=\).*$/\1true/" /etc/sddm.conf',
 		require => [
 			Exec['sddm_example_config'],

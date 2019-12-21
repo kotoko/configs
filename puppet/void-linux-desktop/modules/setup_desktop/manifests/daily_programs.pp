@@ -2,6 +2,9 @@ class setup_desktop::daily_programs {
 	$pkgs = [
 		'audacity',
 		'calibre',
+		'darktable',
+		'digikam',
+		# 'gimp',
 		'falkon',
 		'firefox-esr',
 		'firefox-esr-i18n-pl',
@@ -10,6 +13,7 @@ class setup_desktop::daily_programs {
 		'keepassxc',
 		'libreoffice',
 		'libreoffice-i18n-pl',
+		# 'rawtherapee',
 		'scribus',
 		'VeraCrypt',
 		'virtualbox-ose',

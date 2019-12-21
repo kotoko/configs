@@ -11,7 +11,8 @@ class setup_desktop::network_manager {
 		service => 'dhcpd',
 		require => Void::Package['NetworkManager'],
 	}
-	tidy { '/var/service/dhcpd':
+	void::service { 'dhcpd':
+		enable => false,
 		require => [
 			Void::Sv['down dhcpd'],
 			Void::Package['NetworkManager'],
