@@ -5,5 +5,6 @@ node default {
 			['ewa', 'Ewa Nowak'],
 		],
 		intel => true,  # intel processor?
+		timezone => 'Europe/Warsaw',
 	}
 }
