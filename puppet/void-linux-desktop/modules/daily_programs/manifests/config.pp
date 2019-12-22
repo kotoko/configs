@@ -5,6 +5,6 @@ class daily_programs::config {
 		backup => false,
 		owner => 'root',
 		mode => '0644',
-		source => 'puppet:///modules/veracrypt/sudo_veracrypt',
+		source => 'puppet:///modules/daily_programs/sudo_veracrypt',
 	}
 }
