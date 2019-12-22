@@ -5,7 +5,6 @@ class daily_programs::package {
 		'darktable',
 		'digikam',
 		# 'gimp',
-		'falkon',
 		'firefox-esr',
 		'firefox-esr-i18n-pl',
 		'focuswriter',

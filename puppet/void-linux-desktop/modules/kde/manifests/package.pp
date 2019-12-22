@@ -3,20 +3,38 @@ class kde::package {
 		'ark',
 		'dolphin',
 		'gwenview',
+		'falkon',
+		'filelight',
 		'k3b',
 		'kaddressbook',
+		# 'kamoso',
 		'kate5',
+		'kexi',
+		'kcalc',
+		'kcharselect',
+		'kcolorchooser',
 		'kdeconnect',
 		'kdenlive',
 		'kgpg',
+		'kmag',
 		'kmail',
 		'kmix',
 		'kolourpaint',
+		'kompare',
 		'konsole',
+		'konversation',
 		'korganizer',
+		'krename',
+		'kronometer',
+		'krdc',
+		'krusader',
+		'kteatime',
+		'ktorrent',
 		'kwalletmanager',
+		# 'kwave',
 		'okular',
 		'plasma-browser-integration',
+		'skanlite',
 		'spectacle',
 		'yakuake',
 	]
@@ -28,7 +46,9 @@ class kde::package {
 	$pkgs.each |String $pkg| {
 		void::package { $pkg:
 			ensure => 'installed',
-			require => Void::Package['kde5'],
 		}
+
+		Void::Package['kde5'] ->
+		Void::Package[$pkg]
 	}
 }
