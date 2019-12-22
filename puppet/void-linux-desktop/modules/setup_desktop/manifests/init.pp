@@ -23,7 +23,6 @@ class setup_desktop (
 	class { 'grub': timeout => $grub_timeout }
 	class { 'network_manager': }
 	class { 'xorg': }
-	class { 'console_kit': }
 	class { 'alsa': }
 	class { 'bluetooth': }
 	class { 'cups': }
