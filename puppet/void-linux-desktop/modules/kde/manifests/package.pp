@@ -27,6 +27,7 @@ class kde::package {
 		'krename',
 		'kronometer',
 		'krdc',
+		'krita',
 		'krusader',
 		'kteatime',
 		'ktorrent',
