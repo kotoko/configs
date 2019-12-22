@@ -21,4 +21,8 @@ class users (
 		users => $users,
 	}
 
+	Class['users::add_groups'] ->
+	Class['users::add_users'] ->
+	Class['users::create_directories'] ->
+	Class['users::fix_kde_cursor']
 }
