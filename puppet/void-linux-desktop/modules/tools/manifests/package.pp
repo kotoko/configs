@@ -10,7 +10,6 @@ class tools::package {
 		'fuse-exfat',
 		'fuse-sshfs',
 		'git',
-		'gnupg',
 		'gnupg2',
 		'gptfdisk',
 		'gzip',
@@ -41,9 +40,19 @@ class tools::package {
 		'zsync',
 	]
 
+	$not_pkgs = [
+		'gnupg',
+	]
+
 	$pkgs.each |String $pkg| {
 		void::package { $pkg:
 			ensure => 'installed',
+		}
+	}
+
+	$not_pkgs.each |String $pkg| {
+		void::package { $pkg:
+			ensure => 'absent',
 		}
 	}
 }
