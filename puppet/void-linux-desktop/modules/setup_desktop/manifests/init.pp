@@ -3,6 +3,7 @@ class setup_desktop (
 	Boolean $intel = false,
 	String $timezone = 'UTC',
 	Integer $grub_timeout = 2,
+	Boolean $enable_ssh = false,
 ) {
 	$groups = ['audio', 'bluetooth', 'cdrom', 'input', 'kvm', 'lp', 'lpadmin', 'network', 'plugdev', 'vboxusers', 'video', 'users']
 	$directories = ['Dokumenty', 'Filmy', 'Muzyka', 'Obrazy', 'Pobrane', 'Pulpit']
@@ -39,7 +40,7 @@ class setup_desktop (
 	}
 	class { 'preload': }
 	class { 'java': }
-	class { 'ssh': enable => false }
+	class { 'ssh': enable => $enable_ssh }
 	class { 'users':
 		users => $users,
 		groups => $groups,

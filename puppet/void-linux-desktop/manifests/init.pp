@@ -6,5 +6,6 @@ node default {
 		],
 		intel => true,  # intel processor?
 		timezone => 'Europe/Warsaw',
+		enable_ssh => false,
 	}
 }
