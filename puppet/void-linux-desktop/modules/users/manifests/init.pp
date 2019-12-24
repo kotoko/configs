@@ -21,8 +21,13 @@ class users (
 		users => $users,
 	}
 
+	class { 'users::bashrc':
+		users => $users,
+	}
+
 	Class['users::add_groups'] ->
 	Class['users::add_users'] ->
 	Class['users::create_directories'] ->
-	Class['users::fix_kde_cursor']
+	Class['users::fix_kde_cursor'] ->
+	Class['users::bashrc']
 }
