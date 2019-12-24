@@ -40,19 +40,9 @@ class tools::package {
 		'zsync',
 	]
 
-	$not_pkgs = [
-		'gnupg',
-	]
-
 	$pkgs.each |String $pkg| {
 		void::package { $pkg:
 			ensure => 'installed',
-		}
-	}
-
-	$not_pkgs.each |String $pkg| {
-		void::package { $pkg:
-			ensure => 'absent',
 		}
 	}
 }

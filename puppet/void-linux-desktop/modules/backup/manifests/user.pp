@@ -1,5 +1,5 @@
 class backup::user {
-	user { $user:
+	user { 'backup':
 		ensure => 'present',
 		provider => 'useradd',
 		groups => ['ssh_users'],
