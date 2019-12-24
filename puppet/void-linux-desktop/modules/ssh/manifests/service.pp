@@ -1,8 +1,7 @@
 class ssh::service (
 	Boolean $enable,
 ) {
-	# Disable openssh daemon by default.
-	void::service { 'openssh':
+	void::service { 'sshd':
 		enable => $enable,
 	}
 
