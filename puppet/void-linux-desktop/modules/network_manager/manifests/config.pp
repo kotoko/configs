@@ -7,4 +7,12 @@ class network_manager::config {
 		mode => '0644',
 		source => 'puppet:///modules/network_manager/51-org.freedesktop.NetworkManager.rules',
 	}
+
+	group { 'network':
+		ensure   => 'present',
+		provider => 'groupadd',
+	}
+
+	File['/etc/polkit-1/rules.d'] ->
+	File['/etc/polkit-1/rules.d/51-org.freedesktop.NetworkManager.rules']
 }

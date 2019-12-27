@@ -3,9 +3,7 @@ class users (
 	Array[String] $groups,
 	Array[String] $directories,
 ) {
-	class { 'users::add_groups':
-		groups => $groups,
-	}
+	class { 'users::add_groups': }
 
 	class { 'users::add_users':
 		users => $users,

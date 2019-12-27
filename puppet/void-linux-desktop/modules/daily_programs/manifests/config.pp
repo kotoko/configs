@@ -7,4 +7,9 @@ class daily_programs::config {
 		mode => '0644',
 		source => 'puppet:///modules/daily_programs/sudo_veracrypt',
 	}
+
+	group { 'vboxusers':
+		ensure   => 'present',
+		provider => 'groupadd',
+	}
 }

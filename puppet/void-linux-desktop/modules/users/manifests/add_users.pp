@@ -13,5 +13,10 @@ class users::add_users (
 			groups => $groups,
 			shell => '/bin/bash',
 		}
+
+		$groups.each |String $group| {
+			Group[$group] ->
+			User[$user]
+		}
 	}
 }

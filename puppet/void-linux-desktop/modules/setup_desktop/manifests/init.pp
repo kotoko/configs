@@ -5,8 +5,29 @@ class setup_desktop (
 	Integer $grub_timeout = 2,
 	Boolean $enable_ssh = false,
 ) {
-	$groups = ['audio', 'bluetooth', 'cdrom', 'input', 'kvm', 'lp', 'lpadmin', 'network', 'plugdev', 'scanner', 'vboxusers', 'video', 'users']
-	$directories = ['Dokumenty', 'Filmy', 'Muzyka', 'Obrazy', 'Pobrane', 'Pulpit']
+	$user_groups = [
+		'audio',
+		'bluetooth',
+		'cdrom',
+		'input',
+		'kvm',
+		'lp',
+		'lpadmin',
+		'network',
+		'plugdev',
+		'scanner',
+		'users',
+		'vboxusers',
+		'video',
+	]
+	$user_directories = [
+		'Dokumenty',
+		'Filmy',
+		'Muzyka',
+		'Obrazy',
+		'Pobrane',
+		'Pulpit',
+	]
 
 	stage { 'repository': before => Stage[update] }
 	stage { 'update': require => Stage[repository], before => Stage[main] }
@@ -44,8 +65,8 @@ class setup_desktop (
 	class { 'backup': }
 	class { 'users':
 		users => $users,
-		groups => $groups,
-		directories => $directories,
+		groups => $user_groups,
+		directories => $user_directories,
 		stage => configuration,
 	}
 }

@@ -1,5 +1,4 @@
 class udisks::config {
-	# Allow users to manage connections.
 	file { '/etc/polkit-1/rules.d/53-udisks2.rules':
 		ensure => 'file',
 		backup => false,
@@ -7,4 +6,12 @@ class udisks::config {
 		mode => '0644',
 		source => 'puppet:///modules/udisks/53-udisks2.rules',
 	}
+
+	group { 'plugdev':
+		ensure   => 'present',
+		provider => 'groupadd',
+	}
+
+	File['/etc/polkit-1/rules.d'] ->
+	File['/etc/polkit-1/rules.d/53-udisks2.rules']
 }
