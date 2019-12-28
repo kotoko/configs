@@ -2,7 +2,7 @@ class udisks::config {
 	file { '/etc/polkit-1/rules.d/53-udisks2.rules':
 		ensure => 'file',
 		backup => false,
-		owner => 'root',
+		owner => 'polkitd',
 		mode => '0644',
 		source => 'puppet:///modules/udisks/53-udisks2.rules',
 	}

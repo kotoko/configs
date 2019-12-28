@@ -9,8 +9,8 @@ class polkit::config {
 	file { '/etc/polkit-1/rules.d':
 		ensure => 'directory',
 		backup => false,
-		owner => 'root',
-		mode => '0755',
+		owner => 'polkitd',
+		mode => '0700',
 	}
 
 	File['/etc/polkit-1'] ->
