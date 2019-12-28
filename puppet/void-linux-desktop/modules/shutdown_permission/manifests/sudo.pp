@@ -6,4 +6,7 @@ class shutdown_permission::sudo {
 		mode => '0644',
 		source => 'puppet:///modules/shutdown_permission/sudo_shutdown',
 	}
+
+	File['/etc/sudoers.d'] ->
+	File['/etc/sudoers.d/shutdown']
 }
