@@ -23,7 +23,7 @@ class kde::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
-		mode => '0755',
+		mode => '0644',
 		source => 'puppet:///modules/kde/10-agent-startup.sh',
 	}
 
@@ -31,7 +31,7 @@ class kde::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
-		mode => '0755',
+		mode => '0644',
 		source => 'puppet:///modules/kde/10-agent-shutdown.sh',
 	}
 
