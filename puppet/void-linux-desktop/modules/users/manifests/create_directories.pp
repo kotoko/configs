@@ -1,4 +1,4 @@
-	class users::create_directories (
+class users::create_directories (
 	Array[Tuple[String, String]] $users,
 	Array[String] $directories,
 ) {

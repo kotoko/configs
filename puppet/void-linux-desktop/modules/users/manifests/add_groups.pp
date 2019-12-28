@@ -7,7 +7,6 @@ class users::add_groups {
 		'kvm',
 		'scanner',
 		'users',
-		'video',
 	]
 
 	$groups.each |String $group| {

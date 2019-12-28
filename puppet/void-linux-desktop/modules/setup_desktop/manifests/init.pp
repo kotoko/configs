@@ -1,10 +1,14 @@
 class setup_desktop (
 	Array[Tuple[String, String]] $users = [],
-	Boolean $intel = false,
+	String $cpu = '',
 	String $timezone = 'UTC',
 	Integer $grub_timeout = 2,
 	Boolean $enable_ssh = false,
 ) {
+	if $cpu != '' and $cpu != 'intel' {
+		fail('Unrecognized $cpu parameter! (Should be \'intel\' or empty string).')
+	}
+
 	$user_groups = [
 		'audio',
 		'bluetooth',
@@ -20,6 +24,7 @@ class setup_desktop (
 		'vboxusers',
 		'video',
 	]
+
 	$user_directories = [
 		'Dokumenty',
 		'Filmy',
@@ -56,7 +61,7 @@ class setup_desktop (
 	class { 'sddm': }
 	class { 'tools': }
 	class { 'daily_programs': }
-	if $intel {
+	if $cpu == 'intel' {
 		class { 'thermald': }  # Only intels proccessors!
 	}
 	class { 'preload': }

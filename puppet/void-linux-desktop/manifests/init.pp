@@ -4,7 +4,7 @@ node default {
 			['jan', 'Jan Kowalski'],
 			['ewa', 'Ewa Nowak'],
 		],
-		intel => true,  # intel processor?
+		cpu => 'intel',
 		timezone => 'Europe/Warsaw',
 		enable_ssh => false,
 	}
