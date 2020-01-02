@@ -5,7 +5,7 @@ class ssh::service (
 		enable => $enable,
 	}
 
-	void::service { 'sshguard-socklog':
+	void::service { 'sshguard':
 		enable => true,
 	}
 }

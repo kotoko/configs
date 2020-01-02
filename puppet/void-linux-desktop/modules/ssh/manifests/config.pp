@@ -19,4 +19,22 @@ class ssh::config {
 		ensure   => 'present',
 		provider => 'groupadd',
 	}
+
+	file { '/etc/sv/sshguard':
+		ensure => 'directory',
+		backup => false,
+		owner => 'root',
+		mode => '0755',
+	}
+
+	file { '/etc/sv/sshguard/run':
+		ensure => 'file',
+		backup => false,
+		owner => 'root',
+		mode => '0755',
+		source => 'puppet:///modules/ssh/sshguard_runit',
+	}
+
+	File['/etc/sv/sshguard'] ->
+	File['/etc/sv/sshguard/run']
 }
