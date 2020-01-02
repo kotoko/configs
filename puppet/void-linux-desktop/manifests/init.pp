@@ -5,6 +5,7 @@ node default {
 			['ewa', 'Ewa Nowak'],
 		],
 		cpu => 'intel',
+		gpu => 'intel',
 		timezone => 'Europe/Warsaw',
 		enable_ssh => false,
 	}

@@ -1,12 +1,16 @@
 class setup_desktop (
 	Array[Tuple[String, String]] $users = [],
 	String $cpu = '',
+	String $gpu = '',
 	String $timezone = 'UTC',
 	Integer $grub_timeout = 2,
 	Boolean $enable_ssh = false,
 ) {
 	if $cpu != '' and $cpu != 'intel' {
 		fail('Unrecognized $cpu parameter! (Should be \'intel\' or empty string).')
+	}
+	if $gpu != '' and $gpu != 'intel' {
+		fail('Unrecognized $gpu parameter! (Should be \'intel\' or empty string).')
 	}
 
 	$user_groups = [
@@ -63,6 +67,9 @@ class setup_desktop (
 	class { 'daily_programs': }
 	if $cpu == 'intel' {
 		class { 'thermald': }  # Only intels proccessors!
+	}
+	if $gpu == 'intel' {
+		class { 'intel_gpu': }  # Only intels proccessors!
 	}
 	class { 'preload': }
 	class { 'java': }
