@@ -37,6 +37,7 @@ class kde::package {
 		'plasma-browser-integration',
 		'skanlite',
 		'spectacle',
+		'upower',
 		'yakuake',
 	]
 
