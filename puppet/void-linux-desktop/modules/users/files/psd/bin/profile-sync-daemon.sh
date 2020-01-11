@@ -26,6 +26,8 @@ VOLATILE="$XDG_RUNTIME_DIR"
 PID_FILE="$VOLATILE/psd.pid"
 SHAREDIR="$HOME/.bin/psd"
 
+mkdir -p "$XDG_RUNTIME_DIR"
+
 if [[ ! -d "$SHAREDIR" ]]; then
   echo -e " ${RED}ERROR:${NRM}${BLD} Missing ${BLU}$SHAREDIR${NRM}${BLD} - reinstall the package to use profile-sync-daemon.${NRM}"
   exit 1

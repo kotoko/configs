@@ -27,10 +27,13 @@ class users (
 		users => $users,
 	}
 
+	class { 'users::cache_to_ram': }
+
 	Class['users::add_groups'] ->
 	Class['users::add_users'] ->
 	Class['users::create_directories'] ->
 	Class['users::fix_kde_cursor'] ->
 	Class['users::bashrc'] ->
-	Class['users::psd']
+	Class['users::psd'] ->
+	Class['users::cache_to_ram']
 }
