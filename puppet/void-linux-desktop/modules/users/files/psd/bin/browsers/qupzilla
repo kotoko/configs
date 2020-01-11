@@ -1,0 +1,6 @@
+#	http://blog.qupzilla.com/2013/03/qupzilla-140-released.html
+[[ -d $HOME/.$browser ]] &&
+    DIRArr[0]="$HOME/.$browser"
+[[ -d $XDG_CONFIG_HOME/$browser ]] &&
+    DIRArr[0]="$XDG_CONFIG_HOME/$browser"
+PSNAME="$browser"
