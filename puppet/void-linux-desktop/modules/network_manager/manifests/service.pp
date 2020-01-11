@@ -4,7 +4,16 @@ class network_manager::service {
 		service => 'dhcpd',
 	}
 
+	void::sv { 'down dhcpcd':
+		command => 'down',
+		service => 'dhcpcd',
+	}
+
 	void::service { 'dhcpd':
+		enable => false,
+	}
+
+	void::service { 'dhcpcd':
 		enable => false,
 	}
 
@@ -19,6 +28,8 @@ class network_manager::service {
 
 	Void::Sv['down dhcpd'] ->
 	Void::Service['dhcpd'] ->
+	Void::Sv['down dhcpcd'] ->
+	Void::Service['dhcpcd'] ->
 	Void::Sv['up NetworkManager'] ->
 	Void::Service['NetworkManager']
 }
