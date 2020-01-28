@@ -31,6 +31,7 @@ class tools::package {
 		'tree',
 		'udftools',
 		'unzip',
+		'usbutils',
 		'wget',
 		'vim',
 		'xtools',
