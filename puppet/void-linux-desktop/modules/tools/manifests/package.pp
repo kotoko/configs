@@ -7,6 +7,7 @@ class tools::package {
 		'dosfstools',
 		'efitools',
 		'f2fs-tools',
+		'flac',
 		'fuse-exfat',
 		'fuse-sshfs',
 		'git',
