@@ -65,6 +65,7 @@ class setup_desktop (
 	class { 'sddm': }
 	class { 'tools': }
 	class { 'daily_programs': }
+	class { 'tlp': }
 	if $cpu == 'intel' {
 		class { 'thermald': }  # Only intels proccessors!
 	}
