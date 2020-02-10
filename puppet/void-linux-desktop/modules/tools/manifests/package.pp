@@ -1,6 +1,7 @@
 class tools::package {
 	$pkgs = [
 		'acpi',
+		'cdrskin',
 		'cryptsetup',
 		'ddrescue',
 		'dos2unix',
