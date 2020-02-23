@@ -15,6 +15,7 @@ class kde::package {
 		'kcolorchooser',
 		'kdeconnect',
 		'kdenlive',
+		'kfind',
 		'kgpg',
 		'kmag',
 		'kmail',
