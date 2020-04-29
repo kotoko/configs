@@ -40,6 +40,8 @@ class kde::package {
 		'spectacle',
 		'upower',
 		'yakuake',
+		'xdg-desktop-portal',
+		'xdg-desktop-portal-kde',
 	]
 
 	void::package { 'kde5':
