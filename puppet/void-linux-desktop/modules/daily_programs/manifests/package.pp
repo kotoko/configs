@@ -12,6 +12,7 @@ class daily_programs::package {
 		'keepassxc',
 		'libreoffice',
 		'libreoffice-i18n-pl',
+		'libreoffice-kde',
 		# 'rawtherapee',
 		'scribus',
 		'VeraCrypt',
