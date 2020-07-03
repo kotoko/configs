@@ -1,6 +1,8 @@
 class kde::package {
 	$pkgs = [
 		'ark',
+		'colord',
+		'colord-kde',
 		'dolphin',
 		'gwenview',
 		'falkon',
