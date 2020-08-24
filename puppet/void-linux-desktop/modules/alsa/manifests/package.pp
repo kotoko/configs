@@ -6,4 +6,8 @@ class alsa::package {
 	void::package { 'alsa-lib':
 		ensure => 'installed',
 	}
+
+	void::package { 'sof-firmware':
+		ensure => 'installed',
+	}
 }
