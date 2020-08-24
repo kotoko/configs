@@ -1,5 +1,7 @@
 # void-linux-desktop
 
+*Puppet is temporarily broken on systems with ruby 2.7. Everyone waits for ~~lazy~~ programmers to fix the [issue](https://tickets.puppetlabs.com/browse/PUP-10247).*
+
 This is simple configuration to apply after installing void linux from livecd. It does steps from official installation guide. It also installs KDE with arbitrarily chosen programs and creates user accounts in the end. You can specify a list of user accounts to be created.
 
 ## Context
