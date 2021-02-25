@@ -24,7 +24,6 @@ class tools::package {
 		'nano',
 		'ntfs-3g',
 		'p7zip',
-		'pm-utils',
 		'rsync',
 		'samba',
 		'simple-mtpfs',
