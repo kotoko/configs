@@ -8,6 +8,7 @@ class tools::package {
 		'dosfstools',
 		'efitools',
 		'f2fs-tools',
+		'ffmpeg',
 		'flac',
 		'fuse-exfat',
 		'fuse-sshfs',
