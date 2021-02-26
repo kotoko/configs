@@ -1,0 +1,61 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Fix switching between tabs using upper edge of the screen (aka "magic edge").
+ */
+#TabsToolbar {
+	margin-top: -2px !important;
+}
+
+/* Allow tabs to shrink their width. 
+ */
+.tabbrowser-tab:not([pinned]) {
+	min-width: 15px !important;
+}
+
+/* Disable small loading animation on top of tab.
+ */
+.tab-line {
+	transition: none !important;
+}
+
+/* Circle as animation during loading of a tab.
+ * https://www.reddit.com/r/FirefoxCSS/comments/71vbds/revert_the_tab_throbber_in_firefox_57/
+ */
+.tab-throbber[busy]::before {
+	background-image: url("chrome://global/skin/icons/loading.png") !important;
+	animation: unset !important;
+}
+.tab-throbber[busy]:not([progress])::before {
+	filter: grayscale(100%);
+}
+@media (min-resolution: 2dppx) {
+	.tab-throbber[busy]::before {
+		background-image: url("chrome://global/skin/icons/loading@2x.png") !important;
+	}
+}
+
+/* Disable expanding of address bar.
+ * https://old.reddit.com/r/firefox/comments/fwhlva/address_barawesomebar_design_update_in_firefox_75/fmolndz/
+ * https://www.userchrome.org/megabar-styling-firefox-address-bar.html
+ */
+#urlbar[breakout][breakout-extend] {
+  top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+  left: 0 !important;
+  width: 100% !important;
+}
+
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+  height: var(--urlbar-height) !important;
+  padding-block: 0px !important;
+  padding-inline: 0px !important;
+}
+
+#urlbar[breakout][breakout-extend][breakout-extend-animate] > #urlbar-background {
+  animation-name: none !important;
+}
+
+/* Remove shadows of address bar */
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+    box-shadow: none !important;
+}
+
