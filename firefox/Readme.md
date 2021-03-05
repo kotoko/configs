@@ -12,7 +12,7 @@ Todo:
 
 Instruction:
 
-* create new profile (firefox -ProfileManager)
+* create new profile (firefox -no-remote -ProfileManager) (-no-remote == no internet -> avoid sending telemetry on fresh start)
 * close firefox
 * delete everything from inside profile folder
 * copy files from repo to profile folder
