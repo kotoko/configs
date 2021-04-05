@@ -1,6 +1,5 @@
 class daily_programs::package {
 	$pkgs = [
-		'audacity',
 		'barrier',
 		'calibre',
 		'darktable',
