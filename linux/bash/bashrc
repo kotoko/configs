@@ -30,3 +30,17 @@ function cheat() {
 if [ "$TERM" = "screen" ] || [ "$TERM" = "screen.xterm-256color" ]; then
 	export PS1="\[\e[1;33m\](screen)\[\033[0m\] $PS1"
 fi
+
+# Remember more bash history
+export HISTSIZE=$((2*100*000))
+export HISTFILESIZE=$((100*000))
+
+# Show last used commands
+function did() {
+	NUM="15"
+	if [ "$NUM" -ge 1 ]; then
+		grep "$1" "$HOME/.bash_history" | tail -n "$NUM"
+	else
+		tail -n "$NUM" "$HOME/.bash_history"
+	fi
+}
