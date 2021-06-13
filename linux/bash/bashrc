@@ -32,15 +32,18 @@ if [ "$TERM" = "screen" ] || [ "$TERM" = "screen.xterm-256color" ]; then
 fi
 
 # Remember more bash history
-export HISTSIZE=$((2*100*000))
-export HISTFILESIZE=$((100*000))
+# See also:
+#   https://superuser.com/q/575479
+export HISTSIZE=200000
+export HISTFILESIZE=100000
+export HISTFILE="$HOME/.bash_more_history"
 
 # Show last used commands
 function did() {
 	NUM="15"
 	if [ "$NUM" -ge 1 ]; then
-		grep "$1" "$HOME/.bash_history" | tail -n "$NUM"
+		grep "$1" "$HISTFILE" | tail -n "$NUM"
 	else
-		tail -n "$NUM" "$HOME/.bash_history"
+		tail -n "$NUM" "$HISTFILE"
 	fi
 }
