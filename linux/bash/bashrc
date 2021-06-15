@@ -42,7 +42,7 @@ export HISTFILE="$HOME/.bash_more_history"
 function did() {
 	NUM="15"
 	if [ "$NUM" -ge 1 ]; then
-		grep "$1" "$HISTFILE" | tail -n "$NUM"
+		grep -- "$1" "$HISTFILE" | tail -n "$NUM"
 	else
 		tail -n "$NUM" "$HISTFILE"
 	fi
