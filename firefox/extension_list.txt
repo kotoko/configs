@@ -1,0 +1,17 @@
+Auto High Quality for YouTube - jid0-RjdrEcWS3Ggt4xydeqVS8WQk1Lu@jetpack
+CanvasBlocker - CanvasBlocker@kkapsner.de
+Classic Google Icons - {9d1d76dd-44c9-406f-8576-ecfb60ea1857}
+Clickbait Remover for Youtube - cb-remover@search.mozilla.org
+ConsistentHTTPS - consistent-https@tanalin.com
+Disconnect - 2.0@disconnect.me
+Facebook Container - @contain-facebook
+Make Medium Readable Again - {28d1ed97-5ff6-432b-a26d-61896fe2cbed}
+Old Reddit Redirect - {9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}
+Plasma Integration - plasma-browser-integration@kde.org
+Privacy Badger - jid1-MnnxcxisBPnSXQ@jetpack
+Pure URL - pure-url@jetpack
+Redirect AMP to HTML - {569456be-2850-4f7e-b669-71e55140ee0a}
+Smart HTTPS - {b3e677f4-1150-4387-8629-da738260a48e}
+
+
+Shades of Firefox (Theme) - {aa1c099e-c476-4585-882d-6c11ff7e46ea}

@@ -1,0 +1,142 @@
+// Inspired by:
+// https://github.com/allo-/firefox-profilemaker
+
+
+
+// Polish language in GUI
+user_pref("intl.locale.requested", "pl,en-US");
+
+// Leave only web search on new tab
+user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topstories", false);
+user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
+
+// Disable Ctrl + Q shortcut
+user_pref("browser.quitShortcut.disabled", true);
+
+// Closing last tab does not close window
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+
+// Disable the Battery API
+// Firefox allows websites to read the charge level of the battery. This may be used for fingerprinting.
+user_pref("dom.battery.enabled", false);
+
+// Disable Beacons
+// The ( https://w3c.github.io/beacon/ ) Beacon feature allows websites to send tracking data after you left the website.
+user_pref("beacon.enabled", false);
+
+// Disable the clipboardevents.
+// Disable that websites can get notifications if you copy, paste, or cut something from a web page, and it lets them know which part of the page had been selected.
+//user_pref("dom.event.clipboardevents.enabled", false);
+
+// Disable checking if Firefox is the default browser
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+// Disable disk cache
+user_pref("browser.cache.disk.enable", false);
+
+// Enable memory cache
+user_pref("browser.cache.memory.enable", true);
+
+// Enable Do-not-Track http header
+user_pref("privacy.donottrackheader.enabled", true);
+user_pref("privacy.donottrackheader.value", 1);
+
+// Disable firefox intro tabs on the first start
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+
+// Disable Fixup URLs
+// When you type "something" in the urlbar and press enter, Firefox tries "something.com", if Fixup URLs is enabled.
+user_pref("browser.fixup.alternate.enabled", false);
+
+// Explicitly disable Greasemonkey user tracking
+// Greasemonkey has a (currently opt-in) function to submit user stats. This explicitely disables it, in case that it will become opt-out in the future.
+user_pref("extensions.greasemonkey.stats.optedin", false);
+user_pref("extensions.greasemonkey.stats.url", "");
+
+// Disable health report
+// Disable sending ( https://www.mozilla.org/privacy/firefox/#health-report ) Firefox health reports to Mozilla
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("datareporting.healthreport.service.enabled", false);
+
+// Disable malware scan
+// The malware scan sends an unique identifier for each downloaded file to Google.
+user_pref("browser.safebrowsing.appRepURL", "");
+user_pref("browser.safebrowsing.malware.enabled", false);
+
+// Use a private container for new tab page thumbnails
+// Load the pages displayed on the new tab page in a private container when creating thumbnails.
+user_pref("privacy.usercontext.about_newtab_segregation.enabled", true);
+
+// Disable the intro to the newtab page on the first run
+user_pref("browser.newtabpage.introShown", true);
+
+// Disable Browser Pings
+// http://kb.mozillazine.org/Browser.send_pings
+user_pref("browser.send_pings", false);
+
+// Disable Pocket
+user_pref("extensions.pocket.enabled", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+
+// Show Punycode
+// This helps to protect against possible character spoofing
+user_pref("network.IDN_show_punycode", true);
+
+// Disable reset prompt
+user_pref("browser.disableResetPrompt", true);
+
+// Disable Search Suggestions
+// Firefox suggests search terms in the search field. This will send everything typed or pasted in the search field to the chosen search engine, even when you did not press enter
+user_pref("browser.search.suggest.enabled", false);
+
+// Disable shield studies
+// Mozilla shield studies is a feature which allows mozilla to remotely install experimental addons (https://wiki.mozilla.org/Firefox/Shield)
+user_pref("app.normandy.enabled", false);
+user_pref("app.normandy.api_url", "");
+user_pref("app.shield.optoutstudies.enabled", false);
+user_pref("extensions.shield-recipe-client.enabled", false);
+user_pref("extensions.shield-recipe-client.api_url", "");
+
+// Disable Sponsored Top Sites
+// https://support.mozilla.org/en-US/kb/sponsor-privacy
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite", false);
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored", false);
+
+// Disable Telemetry
+// https://support.mozilla.org/kb/share-telemetry-data-mozilla-help-improve-firefox
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.rejected", true);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.unifiedIsOptIn", false);
+user_pref("toolkit.telemetry.prompted", 2);
+user_pref("toolkit.telemetry.server", "");
+user_pref("toolkit.telemetry.cachedClientID", "");
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.hybridContent.enabled", false);
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+
+// Disable experiments
+// https://wiki.mozilla.org/Telemetry/Experiments
+user_pref("experiments.enabled", false);
+user_pref("experiments.manifest.uri", "");
+user_pref("experiments.supported", false);
+user_pref("experiments.activeExperiment", false);
+user_pref("network.allow-experiments", false);
+
+// Do not trim URLs in navigation bar
+// By default Firefox trims many URLs (hiding the http:// prefix and trailing slash /)
+user_pref("browser.urlbar.trimURLs", false);
+
+// Allow GUI customization via file userChrome.css
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+// Disable smooth scrolling
+user_pref("general.smoothScroll", false);

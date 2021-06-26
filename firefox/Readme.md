@@ -6,13 +6,11 @@ Done:
 
 * most about:config flags
 
-Todo:
-
-* add extensions and configure them
-
 Instruction:
 
-* create new profile (firefox -no-remote -ProfileManager) (-no-remote == no internet -> avoid sending telemetry on fresh start)
-* close firefox
-* delete everything from inside profile folder
-* copy files from repo to profile folder
+1. Create new profile: `firefox -no-remote -ProfileManager` (-no-remote == no internet -> avoid sending telemetry on fresh start).
+2. Close firefox.
+3. Delete all files/folders from inside profile folder.
+4. Copy files from folder `profile-abcxyz/` to profile folder.
+5. Go into addon settings and turn on all extensions.
+6. Configure extensions to your liking.
