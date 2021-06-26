@@ -32,6 +32,7 @@ class tools::package {
 		'tar',
 		'tree',
 		'udftools',
+		'unrar',
 		'unzip',
 		'usbutils',
 		'wget',
@@ -48,4 +49,7 @@ class tools::package {
 			ensure => 'installed',
 		}
 	}
+
+	Class['void::repo_nonfree'] ->
+	Void::Package['unrar']
 }
