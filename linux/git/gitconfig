@@ -1,0 +1,14 @@
+[push]
+	default = simple
+[alias]
+	hist = log --oneline
+	diffc = diff --cached
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+
+[filter "tabs-to-spaces"]
+        clean = /usr/bin/env expand --initial --tabs=4
+        smudge = /usr/bin/env unexpand --first-only --tabs=4
