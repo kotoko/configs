@@ -84,6 +84,11 @@ fi
 # Try to keep environment pollution down.
 unset use_color sh
 
+# Add info about git repo to prompt when available.
+if [ -f ~/.bash_git_integration ]; then
+	. ~/.bash_git_integration
+fi
+
 # Aliases.
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
