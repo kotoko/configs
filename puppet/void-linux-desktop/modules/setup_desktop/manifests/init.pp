@@ -45,6 +45,7 @@ class setup_desktop (
 	class { 'repository': stage => repository }
 	class { 'update_system': stage => update }
 	class { 'void::repo_nonfree': }
+	class { 'editor': }
 	class { 'syslog': }
 	class { 'disable_ttys': nrs => [1] }
 	class { 'cron': }
