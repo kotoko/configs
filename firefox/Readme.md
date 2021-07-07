@@ -1,6 +1,6 @@
 # Firefox profile
 
-This is initial configuration for firefox profile. It's addition to puppet script in folder void-linux-desktop but you can use on your computer too.
+This is initial configuration for firefox profile. It's addition to puppet script in folder void-linux-desktop but you can also use standalone on your computer too.
 
 ## Instruction
 
