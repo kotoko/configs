@@ -130,7 +130,7 @@ export HISTFILE="$HOME/.bash_more_history"
 # Show last used commands
 function did() {
 	NUM="15"
-	if [ "$NUM" -ge 1 ]; then
+	if [ "$#" -ge 1 ]; then
 		grep -- "$1" "$HISTFILE" | tail -n "$NUM"
 	else
 		tail -n "$NUM" "$HISTFILE"
