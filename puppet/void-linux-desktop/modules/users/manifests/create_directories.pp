@@ -47,6 +47,14 @@ class users::create_directories (
 			mode => '0750',
 		}
 
+		file { "/home/${user}/.config/user-dirs.dirs":
+			ensure => 'file',
+			backup => false,
+			owner => $user,
+			mode => '0644',
+			source => 'puppet:///modules/users/user-dirs.dirs',
+		}
+
 		$directories.each |String $dir| {
 			file { "/home/${user}/${dir}":
 				ensure => 'directory',
@@ -66,6 +74,7 @@ class users::create_directories (
 		File["/home/${user}/.config"] ->
 		File["/home/${user}/.config/plasma-workspace"] ->
 		File["/home/${user}/.config/plasma-workspace/env"] ->
-		File["/home/${user}/.config/plasma-workspace/shutdown"]
+		File["/home/${user}/.config/plasma-workspace/shutdown"] ->
+		File["/home/${user}/.config/user-dirs.dirs"]
 	}
 }
