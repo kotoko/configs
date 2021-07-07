@@ -55,6 +55,25 @@ class users::create_directories (
 			source => 'puppet:///modules/users/user-dirs.dirs',
 		}
 
+		file { "/home/${user}/.local":
+			ensure => 'directory',
+			backup => false,
+			owner => $user,
+			mode => '0750',
+		}
+		file { "/home/${user}/.local/share":
+			ensure => 'directory',
+			backup => false,
+			owner => $user,
+			mode => '0750',
+		}
+		file { "/home/${user}/.local/share/applications":
+			ensure => 'directory',
+			backup => false,
+			owner => $user,
+			mode => '0750',
+		}
+
 		$directories.each |String $dir| {
 			file { "/home/${user}/${dir}":
 				ensure => 'directory',
@@ -69,6 +88,11 @@ class users::create_directories (
 
 		File["/home/${user}"] ->
 		File["/home/${user}/.bin"]
+
+		File["/home/${user}"] ->
+		File["/home/${user}/.local"] ->
+		File["/home/${user}/.local/share"] ->
+		File["/home/${user}/.local/share/applications"]
 
 		File["/home/${user}"] ->
 		File["/home/${user}/.config"] ->
