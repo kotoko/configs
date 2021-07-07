@@ -1,6 +1,7 @@
 class users::fix_kde_cursor (
 	Array[Tuple[String, String]] $users,
 ) {
+	# Configuration for normal users
 	$users.each |Tuple[String, String] $u| {
 		$user = $u[0]
 
@@ -41,4 +42,37 @@ class users::fix_kde_cursor (
 		File["/home/${user}/.icons/default/index.theme"] ->
 		File["/home/${user}/.icons/default/cursors"]
 	}
+
+	# Configuration for new accounts created in future
+	file { "/etc/skell/.icons":
+		ensure => 'directory',
+		backup => false,
+		owner => 'root',
+		mode => '0750',
+	}
+	file { "/etc/skell/.icons/default":
+		ensure => 'directory',
+		backup => false,
+		owner => 'root',
+		mode => '0750',
+	}
+	file { "/etc/skell/.icons/default/index.theme":
+		ensure => 'file',
+		backup => false,
+		owner => 'root',
+		mode => '0750',
+		source => 'puppet:///modules/users/index.theme',
+	}
+	file { "/etc/skell/.icons/default/cursors":
+		ensure => 'link',
+		backup => false,
+		owner => 'root',
+		mode => '0750',
+		target => '/usr/share/icons/breeze_cursors/cursors',
+	}
+
+	File["/etc/skell/.icons"] ->
+	File["/etc/skell/.icons/default"] ->
+	File["/etc/skell/.icons/default/index.theme"] ->
+	File["/etc/skell/.icons/default/cursors"]
 }
