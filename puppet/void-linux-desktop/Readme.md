@@ -8,7 +8,7 @@ Windows 10 is a big no-no, so after death of Windows 7 I decided to search for l
 
 * can be used as desktop,
 * has "minimal" edition,
-* has up-to-date programs,
+* has up-to-date programs (rolling release),
 * is easy to update/manage.
 
 After a few experiments turned out that void linux fits perfectly. I had to repeat installing few times, so I decided to automate this process and thus this script was created.
@@ -19,19 +19,26 @@ After a few experiments turned out that void linux fits perfectly. I had to repe
 
 I am assuming that during running this script computer is connected to the internet via ethernet cable.
 
-1. Install with official void installer. Choose network installation.
+1. Install with official void installer. Choose network installation. Create default user `void` with trivial password.
 2. Reboot.
 3. Go to tty2: `Ctrl` + `Alt` + `F2`. (It's important to not be on tty1.)
 4. Login as `root`.
 5. Copy files to the computer.
     * Edit users in the file `manifests/init.pp`.
 6. Run script: `bash run.sh 2>&1 | tee out.log`.
-    * During installation sddm will start. It may switch your screen to something else. You can go back to the terminal: `Ctrl` + `Alt` + `F2`.
-    * After finishing you can read log from file `out.log`.
+    * During installation of sddm it may switch your screen to something else. You can go back to the terminal: `Ctrl` + `Alt` + `F2`.
+    * When finished you can read log from file `out.log`.
 7. Reboot.
 
 Things to do after reboot:
 * set passwords for user accounts,
-* remove copied files,
-* install drivers (?),
-* configure sudo.
+* configure at least one user to run any command as root via sudo
+* remove/disable password for root
+* remove user `void`
+* install additional drivers (?),
+* remove copied files (?),
+
+## See also
+
+* official livecd - [voidlinux-iso](https://alpha.de.repo.voidlinux.org/live/current/)
+* my customized livecd - [voidlinux-iso-extra](https://github.com/kotoko/voidlinux-iso-extra)
