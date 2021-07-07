@@ -8,7 +8,8 @@ This is initial configuration for firefox profile. It's addition to puppet scrip
 2. Close firefox.
 3. Delete all files/folders from inside profile folder.
 4. Copy files from folder `profile-abcxyz/` to profile folder.
-5. Go into addon settings and turn on all extensions.
-6. Configure extensions to your liking.
+5. Open firefox.
+6. Go into addon settings and turn on all extensions.
+7. Configure extensions to your liking.
 
 Done!
