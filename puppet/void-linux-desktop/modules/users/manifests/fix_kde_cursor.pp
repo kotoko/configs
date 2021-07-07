@@ -44,26 +44,26 @@ class users::fix_kde_cursor (
 	}
 
 	# Configuration for new accounts created in future
-	file { "/etc/skell/.icons":
+	file { "/etc/skel/.icons":
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
 		mode => '0750',
 	}
-	file { "/etc/skell/.icons/default":
+	file { "/etc/skel/.icons/default":
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
 		mode => '0750',
 	}
-	file { "/etc/skell/.icons/default/index.theme":
+	file { "/etc/skel/.icons/default/index.theme":
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
 		mode => '0750',
 		source => 'puppet:///modules/users/index.theme',
 	}
-	file { "/etc/skell/.icons/default/cursors":
+	file { "/etc/skel/.icons/default/cursors":
 		ensure => 'link',
 		backup => false,
 		owner => 'root',
@@ -71,8 +71,8 @@ class users::fix_kde_cursor (
 		target => '/usr/share/icons/breeze_cursors/cursors',
 	}
 
-	File["/etc/skell/.icons"] ->
-	File["/etc/skell/.icons/default"] ->
-	File["/etc/skell/.icons/default/index.theme"] ->
-	File["/etc/skell/.icons/default/cursors"]
+	File["/etc/skel/.icons"] ->
+	File["/etc/skel/.icons/default"] ->
+	File["/etc/skel/.icons/default/index.theme"] ->
+	File["/etc/skel/.icons/default/cursors"]
 }

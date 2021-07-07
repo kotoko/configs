@@ -43,12 +43,12 @@ class users::bashrc (
 
 	# Configuration for new accounts created in future
 	[
-		["/etc/skell/.bashrc", 'puppet:///modules/users/bash/bashrc'],
-		["/etc/skell/.bash_aliases", 'puppet:///modules/users/bash/bash_aliases'],
-		["/etc/skell/.bash_git_integration", 'puppet:///modules/users/bash/bash_git_integration'],
-		["/etc/skell/.dir_colors", 'puppet:///modules/users/bash/dir_colors'],
-		["/etc/skell/.git-prompt-colors.sh", 'puppet:///modules/users/bash/git-prompt-colors.sh'],
-		["/etc/skell/.screenrc", 'puppet:///modules/users/bash/screenrc'],
+		["/etc/skel/.bashrc", 'puppet:///modules/users/bash/bashrc'],
+		["/etc/skel/.bash_aliases", 'puppet:///modules/users/bash/bash_aliases'],
+		["/etc/skel/.bash_git_integration", 'puppet:///modules/users/bash/bash_git_integration'],
+		["/etc/skel/.dir_colors", 'puppet:///modules/users/bash/dir_colors'],
+		["/etc/skel/.git-prompt-colors.sh", 'puppet:///modules/users/bash/git-prompt-colors.sh'],
+		["/etc/skel/.screenrc", 'puppet:///modules/users/bash/screenrc'],
 	].each |Tuple[String, String] $f| {
 		file { $f[0]:
 			ensure => 'file',
