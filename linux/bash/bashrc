@@ -103,9 +103,6 @@ if [ -d "$HOME/.bin" ]; then
 	PATH="$HOME/.bin:$PATH"
 fi
 
-# Add admins executables.
-#PATH="$PATH:/sbin:/usr/sbin"
-
 # Function to color stderr to red.
 # Found somewhere on stackoverflow.
 color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[91m&\e[m,'>&2)3>&1
