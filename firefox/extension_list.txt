@@ -13,6 +13,6 @@ Pure URL - pure-url@jetpack
 Redirect AMP to HTML - {569456be-2850-4f7e-b669-71e55140ee0a}
 Smart HTTPS - {b3e677f4-1150-4387-8629-da738260a48e}
 SponsorBlock na YouTube - sponsorBlocker@ajay.app
-
+uBlock Origin - uBlock0@raymondhill.net
 
 Shades of Firefox (Theme) - {aa1c099e-c476-4585-882d-6c11ff7e46ea}
