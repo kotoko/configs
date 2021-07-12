@@ -12,6 +12,7 @@
 	"{569456be-2850-4f7e-b669-71e55140ee0a}":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"{b3e677f4-1150-4387-8629-da738260a48e}":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"uBlock0@raymondhill.net":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
+	"gaoptoutaddon_1.0.8":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 
 
 	"{9d1d76dd-44c9-406f-8576-ecfb60ea1857}":{"permissions":[],"origins":[]},

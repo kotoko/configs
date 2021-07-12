@@ -5,6 +5,7 @@ Clickbait Remover for Youtube - cb-remover@search.mozilla.org
 ConsistentHTTPS - consistent-https@tanalin.com
 Disconnect - 2.0@disconnect.me
 Facebook Container - @contain-facebook
+Google Analytics Opt-out - gaoptoutaddon_1.0.8
 Make Medium Readable Again - {28d1ed97-5ff6-432b-a26d-61896fe2cbed}
 Old Reddit Redirect - {9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}
 Plasma Integration - plasma-browser-integration@kde.org
