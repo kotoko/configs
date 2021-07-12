@@ -7,7 +7,6 @@
 	"2.0@disconnect.me":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"{28d1ed97-5ff6-432b-a26d-61896fe2cbed}":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"{9063c2e9-e07c-4c2c-9646-cfe7ca8d0498}":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
-	"jid1-MnnxcxisBPnSXQ@jetpack":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"pure-url@jetpack":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"{569456be-2850-4f7e-b669-71e55140ee0a}":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
 	"{b3e677f4-1150-4387-8629-da738260a48e}":{"permissions":["internal:privateBrowsingAllowed"],"origins":[]},
