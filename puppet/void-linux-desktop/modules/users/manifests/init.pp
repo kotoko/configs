@@ -33,6 +33,10 @@ class users (
 		users => $users,
 	}
 
+	class { 'users::vlc':
+		users => $users,
+	}
+
 	Class['users::add_groups'] ->
 	Class['users::add_users'] ->
 	Class['users::create_directories'] ->
@@ -40,5 +44,6 @@ class users (
 	Class['users::bashrc'] ->
 	Class['users::psd'] ->
 	Class['users::cache_to_ram'] ->
-	Class['users::app_shortcuts']
+	Class['users::app_shortcuts'] ->
+	Class['users::vlc']
 }

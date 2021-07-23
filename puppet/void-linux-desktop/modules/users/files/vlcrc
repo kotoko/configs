@@ -1,0 +1,11 @@
+[freetype] # Freetype2 font renderer
+freetype-font=Alte Haas Grotesk
+freetype-monofont=Liberation Mono
+freetype-rel-fontsize=20
+freetype-color=15790320
+freetype-bold=1
+freetype-background-opacity=190
+freetype-background-color=2039583
+
+[qt] # Qt interface
+qt-max-volume=200
