@@ -77,6 +77,7 @@ class setup_desktop (
 	}
 	class { 'preload': }
 	class { 'java': }
+	class { 'void_updater': }
 	class { 'ssh': enable => $enable_ssh }
 	class { 'backup': }
 	class { 'users':
