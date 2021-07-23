@@ -1,4 +1,4 @@
-class users::psd (
+class users::vlc (
 	Array[Tuple[String, String]] $users,
 ) {
   $users.each |Tuple[String, String] $u| {
