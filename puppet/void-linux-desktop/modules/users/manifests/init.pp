@@ -45,5 +45,6 @@ class users (
 	Class['users::psd'] ->
 	Class['users::cache_to_ram'] ->
 	Class['users::app_shortcuts'] ->
+	Class['users::fonts'] ->
 	Class['users::vlc']
 }

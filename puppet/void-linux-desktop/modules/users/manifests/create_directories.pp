@@ -19,6 +19,13 @@ class users::create_directories (
 			mode => '0750',
 		}
 
+		file { "/home/${user}/.fonts":
+			ensure => 'directory',
+			backup => false,
+			owner => $user,
+			mode => '0750',
+		}
+
 		file { "/home/${user}/.config":
 			ensure => 'directory',
 			backup => false,
@@ -88,6 +95,9 @@ class users::create_directories (
 
 		File["/home/${user}"] ->
 		File["/home/${user}/.bin"]
+
+		File["/home/${user}"] ->
+		File["/home/${user}/.fonts"]
 
 		File["/home/${user}"] ->
 		File["/home/${user}/.local"] ->
