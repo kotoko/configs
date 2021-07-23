@@ -33,6 +33,10 @@ class users (
 		users => $users,
 	}
 
+	class { 'users::fonts':
+		users => $users,
+	}
+
 	class { 'users::vlc':
 		users => $users,
 	}
