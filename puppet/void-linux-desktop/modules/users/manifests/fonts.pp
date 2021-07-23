@@ -15,7 +15,7 @@ class users::fonts (
       "AlteHaasGroteskRegular.ttf",
       "Alte Haas Grotesk licence.rtf",
       "Alte Haas Grotesk example.jpg",
-    ].each |Tuple[String, String] $f| {
+    ].each |String $f| {
       file { "/home/${user}/.fonts/alte_haas_grotesk/${f}":
         ensure => 'file',
         backup => false,
