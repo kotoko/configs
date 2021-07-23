@@ -15,7 +15,7 @@ class users::vlc (
       backup => false,
       owner => $user,
       mode => '0640',
-      source => "puppet:///modules/users/vlc/vlcrc",
+      source => "puppet:///modules/users/vlcrc",
     }
 
     File["/home/${user}/.config"] ->
