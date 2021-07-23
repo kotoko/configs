@@ -64,6 +64,7 @@ class setup_desktop (
 	class { 'firewall': }
 	class { 'dbus': }
 	class { 'kde': }
+	class { 'fonts': }
 	class { 'sddm': }
 	class { 'tools': }
 	class { 'daily_programs': }
