@@ -19,6 +19,7 @@ class tools::package {
 		'exiftool',
 		'hfsutils',
 		'inotify-tools',
+		'libjpeg-turbo-tools',
 		'lvm2',
 		'lz4',
 		'makepasswd',
