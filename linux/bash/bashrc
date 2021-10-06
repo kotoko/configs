@@ -103,6 +103,11 @@ if [ -d "$HOME/.bin" ]; then
 	PATH="$HOME/.bin:$PATH"
 fi
 
+# Binaries from Nix
+if [ -e "/home/nix/.nix-profile/bin" ]; then 
+        PATH="$PATH:/home/nix/.nix-profile/bin"
+fi
+
 # Function to color stderr to red.
 # Found somewhere on stackoverflow.
 color()(set -o pipefail;"$@" 2>&1>&3|sed $'s,.*,\e[91m&\e[m,'>&2)3>&1
