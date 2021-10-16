@@ -2,7 +2,7 @@ class void_updater {
   file { "/root/void-updater.sh":
     ensure => 'file',
     backup => false,
-    owner => $user,
+    owner => 'root',
     mode => '0700',
     source => "puppet:///modules/void_updater/void-updater.sh",
   }
