@@ -6,6 +6,4 @@ class tlp::config {
 		mode => '0644',
 		source => 'puppet:///modules/tlp/tlp.conf',
 	}
-
-	File['/etc/tlp.conf']
 }
