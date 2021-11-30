@@ -1,5 +1,5 @@
 #!/bin/bash
-# Show selected rubygems in Gentoo.
+# Show selected GCC profile.
 set -e
 echo "Available GCC profiles:"
 gcc-config --list-profiles
