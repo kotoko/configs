@@ -321,10 +321,6 @@ bring_old_perl_modules_up_to_date() {
     show "Ensuring perl modules are matched to current version of perl..."
     perl-cleaner ${VERBOSITYFLAG} --all
 }
-cleanup_python_config() {
-    # remove uninstalled versions from /etc/python-exec/python-exec.conf
-    eselect python cleanup
-}
 run_custom_updaters_if_present() {
     # if not inhibited, find any executable files in the /etc/genup/updaters.d
     # top-level directory (resolving symlinks) and execute them in turn,
@@ -569,12 +565,10 @@ remove_unreferenced_packages
 rebuild_external_modules_if_necessary
 rebuild_packages_depending_on_stale_libraries
 bring_old_perl_modules_up_to_date
-cleanup_python_config
 interactively_resolve_clashing_config_file_changes
 remove_unreferenced_packages
 rebuild_where_missing_libraries_detected
 rebuild_packages_depending_on_stale_libraries
-purge_old_distfiles_if_desired
 update_environment
 update_eix_metadata
 run_custom_updaters_if_present
