@@ -1,4 +1,4 @@
 #!/bin/bash
-# Clean outdated source tarballs from PKGDIR in Gentoo.
+# Clean outdated source tarballs in Gentoo.
 set -e
 eclean --deep distfiles
