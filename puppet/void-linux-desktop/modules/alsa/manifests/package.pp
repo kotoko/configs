@@ -10,8 +10,4 @@ class alsa::package {
 	void::package { 'sof-firmware':
 		ensure => 'installed',
 	}
-
-	void::package { 'apulse':
-		ensure => 'installed',
-	}
 }

@@ -33,6 +33,14 @@ class users::create_directories (
 			mode => '0750',
 		}
 
+		file { "/home/${user}/.config/autostart":
+			ensure => 'directory',
+			backup => false,
+			owner => $user,
+			group => $user,
+			mode => '0750',
+		}
+
 		file { "/home/${user}/.config/plasma-workspace":
 			ensure => 'directory',
 			backup => false,
@@ -106,6 +114,7 @@ class users::create_directories (
 
 		File["/home/${user}"] ->
 		File["/home/${user}/.config"] ->
+		File["/home/${user}/.config/autostart"] ->
 		File["/home/${user}/.config/plasma-workspace"] ->
 		File["/home/${user}/.config/plasma-workspace/env"] ->
 		File["/home/${user}/.config/plasma-workspace/shutdown"] ->

@@ -5,12 +5,16 @@ class setup_desktop (
 	String $timezone = 'UTC',
 	Integer $grub_timeout = 2,
 	Boolean $enable_ssh = false,
+	String $sound = 'pipewire',
 ) {
 	if $cpu != '' and $cpu != 'intel' {
 		fail('Unrecognized $cpu parameter! (Should be \'intel\' or empty string).')
 	}
 	if $gpu != '' and $gpu != 'intel' {
 		fail('Unrecognized $gpu parameter! (Should be \'intel\' or empty string).')
+	}
+	if $sound != 'alsa' and $sound != 'pipewire' {
+		fail('Unrecognized $sound parameter! (Should be \'alsa\' or \'pipewire\').')
 	}
 
 	$user_groups = [
@@ -38,6 +42,9 @@ class setup_desktop (
 		'Pulpit',
 	]
 
+	$apulse = ($sound == 'alsa')
+	$pipewire = ($sound == 'pipewire')
+
 	stage { 'repository': before => Stage[update] }
 	stage { 'update': require => Stage[repository], before => Stage[main] }
 	stage { 'configuration': require => Stage[main] }
@@ -57,6 +64,12 @@ class setup_desktop (
 	class { 'network_manager': }
 	class { 'xorg': }
 	class { 'alsa': }
+	if $apulse {
+		class { 'apulse': }
+	}
+	if $pipewire {
+		class { 'pipewire': }
+	}
 	class { 'bluetooth': }
 	class { 'cups': }
 	class { 'udisks': }
@@ -84,6 +97,8 @@ class setup_desktop (
 		users => $users,
 		groups => $user_groups,
 		directories => $user_directories,
+		apulse => $apulse,
+		pipewire_autostart => $pipewire,
 		stage => configuration,
 	}
 }

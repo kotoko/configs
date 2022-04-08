@@ -1,0 +1,11 @@
+<% | String $exec_path | -%>
+[Desktop Entry]
+Exec=<%= $exec_path %>
+Icon=dialog-scripts
+Name=pipewire-start.sh
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-AutostartScript=true
+X-KDE-SubstituteUID=false

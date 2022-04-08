@@ -2,6 +2,8 @@ class users (
 	Array[Tuple[String, String]] $users,
 	Array[String] $groups,
 	Array[String] $directories,
+	Boolean $apulse,
+	Boolean $pipewire_autostart,
 ) {
 	class { 'users::add_groups': }
 
@@ -31,6 +33,7 @@ class users (
 
 	class { 'users::app_shortcuts':
 		users => $users,
+		apulse => $apulse,
 	}
 
 	class { 'users::fonts':
@@ -39,6 +42,15 @@ class users (
 
 	class { 'users::vlc':
 		users => $users,
+	}
+
+	if $pipewire_autostart {
+		class { 'users::pipewire_autostart':
+			users => $users,
+		}
+
+		Class['users::create_directories'] ->
+		Class['users::pipewire_autostart']
 	}
 
 	Class['users::add_groups'] ->
