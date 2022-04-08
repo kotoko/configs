@@ -1,14 +1,22 @@
+[core]
+	editor = /usr/bin/env vim
+
 [push]
 	default = simple
+
 [alias]
-	hist = log --oneline
-	diffc = diff --cached
-	co = checkout
 	br = branch
 	ci = commit
-	st = status
+	co = checkout
+	diffc = diff --cached
+	hist = log --oneline
 	last = log -1 HEAD
+	st = status
+	sw = switch
 
 [filter "tabs-to-spaces"]
-        clean = /usr/bin/env expand --initial --tabs=4
-        smudge = /usr/bin/env unexpand --first-only --tabs=4
+	clean = /usr/bin/env expand --initial --tabs=4
+	smudge = /usr/bin/env unexpand --first-only --tabs=4
+
+#[includeIf "gitdir:~/Projects/company1/"]
+#	path = .gitconfig-company1
