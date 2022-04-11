@@ -14,13 +14,20 @@ fi
 # Set temporary repository.
 if [ ! -f "/tmp/repo_updated" ]; then
 	echo "repository=https://mirrors.dotsrc.org/voidlinux/current" > "/etc/xbps.d/tmp-repository.conf"
-	yes y | xbps-install -S
+	xbps-install --yes -S
 	touch "/tmp/repo_updated"
 fi
 
+# Install ruby if neccessary.
+if ! command -v ruby >/dev/null 2>&1; then
+	xbps-install --yes ruby
+fi
+
 # Install puppet if neccessary.
+GEM_BIN_PATH=`(gem env | grep 'USER INSTALLATION DIRECTORY' | sed --quiet "s/.*USER INSTALLATION DIRECTORY: \(.*\)/\1/p")`"/bin"
+export PATH="$GEM_BIN_PATH:$PATH"
 if ! command -v puppet >/dev/null 2>&1; then
-	yes y | xbps-install puppet
+	gem install --user-install puppet
 fi
 
 # Remove temporary repository.
@@ -32,8 +39,12 @@ fi
 puppet apply --modulepath ./modules manifests/init.pp
 
 # Remove puppet.
-yes y | xbps-remove puppet
-yes y | xbps-remove -Oo
+yes y | gem uninstall puppet
+rm -rf /root/.local/share/gem
+
+# Remove ruby.
+xbps-remove --yes ruby
+xbps-remove --yes -Oo
 
 echo
 echo "All done! You can reboot now."
