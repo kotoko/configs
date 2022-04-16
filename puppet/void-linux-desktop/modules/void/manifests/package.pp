@@ -4,11 +4,11 @@ define void::package (
 ) {
 	if $ensure == 'installed' {
 		exec { "xbps-install ${pkg}":
-			command => "/usr/bin/yes y | /usr/bin/xbps-install ${pkg}",
+			command => "/usr/bin/xbps-install --yes ${pkg}",
 		}
 	} elsif $ensure == 'absent' {
 		exec { "xbps-remove ${pkg}":
-			command => "/usr/bin/yes y | /usr/bin/xbps-remove ${pkg}",
+			command => "/usr/bin/xbps-remove --yes ${pkg}",
 		}
 	} else {
 		    fail('Unrecognized \'ensure\' value!')
