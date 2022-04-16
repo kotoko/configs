@@ -3,6 +3,7 @@ class firewall::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 
@@ -10,6 +11,7 @@ class firewall::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/firewall/iptables.rules',
 	}
@@ -18,6 +20,7 @@ class firewall::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/firewall/ip6tables.rules',
 	}
@@ -26,6 +29,7 @@ class firewall::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 
@@ -33,6 +37,7 @@ class firewall::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/firewall/ipset.rules',
 	}

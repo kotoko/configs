@@ -7,6 +7,7 @@ class users::vlc (
       ensure   => 'directory',
         backup => false,
         owner  => $user,
+        group  => $user,
         mode   => '0750',
       }
 
@@ -14,6 +15,7 @@ class users::vlc (
       ensure => 'file',
       backup => false,
       owner => $user,
+      group => $user,
       mode => '0640',
       source => "puppet:///modules/users/vlcrc",
     }

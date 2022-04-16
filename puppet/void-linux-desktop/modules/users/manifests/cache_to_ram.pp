@@ -3,6 +3,7 @@ class users::cache_to_ram {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/users/xdg_cache_home.sh',
 	}
@@ -11,6 +12,7 @@ class users::cache_to_ram {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/users/keepassxc.sh',
 	}

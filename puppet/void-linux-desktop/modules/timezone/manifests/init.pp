@@ -6,6 +6,7 @@ class timezone (
 		ensure => 'link',
 		target => "/usr/share/zoneinfo/${timezone}",
 		owner => 'root',
+		group => 'root',
 		backup => false,
 	}
 }

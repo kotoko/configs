@@ -3,6 +3,7 @@ class pipewire::config {
 		ensure => 'link',
 		target => '/usr/share/alsa/alsa.conf.d/50-pipewire.conf',
 		owner => 'root',
+		group => 'root',
 		backup => false,
 	}
 
@@ -10,6 +11,7 @@ class pipewire::config {
 		ensure => 'link',
 		target => '/usr/share/alsa/alsa.conf.d/99-pipewire-default.conf',
 		owner => 'root',
+		group => 'root',
 		backup => false,
 	}
 

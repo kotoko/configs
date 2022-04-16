@@ -3,6 +3,7 @@ class sudo::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 }

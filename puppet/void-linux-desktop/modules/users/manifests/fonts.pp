@@ -7,6 +7,7 @@ class users::fonts (
       ensure   => 'directory',
         backup => false,
         owner  => $user,
+        group  => $user,
         mode   => '0750',
       }
 
@@ -20,6 +21,7 @@ class users::fonts (
         ensure => 'file',
         backup => false,
         owner  => $user,
+        group  => $user,
         mode   => '0640',
         source => "puppet:///modules/users/fonts/alte_haas_grotesk/${f}",
       }

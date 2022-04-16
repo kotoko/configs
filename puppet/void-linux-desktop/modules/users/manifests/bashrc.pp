@@ -17,6 +17,7 @@ class users::bashrc (
 				ensure => 'file',
 				backup => false,
 				owner => $user,
+				group => $user,
 				mode => '0644',
 				source => $f[1],
 			}
@@ -36,6 +37,7 @@ class users::bashrc (
 			ensure => 'file',
 			backup => false,
 			owner => 'root',
+			group => 'root',
 			mode => '0644',
 			source => $f[1],
 		}
@@ -54,6 +56,7 @@ class users::bashrc (
 			ensure => 'file',
 			backup => false,
 			owner => 'root',
+			group => 'root',
 			mode => '0644',
 			source => $f[1],
 		}

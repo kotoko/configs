@@ -3,6 +3,7 @@ class ssh::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/ssh/sshguard.conf',
 	}
@@ -11,6 +12,7 @@ class ssh::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/ssh/sshd_config',
 	}
@@ -24,6 +26,7 @@ class ssh::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 
@@ -31,6 +34,7 @@ class ssh::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 		source => 'puppet:///modules/ssh/sshguard_runit',
 	}

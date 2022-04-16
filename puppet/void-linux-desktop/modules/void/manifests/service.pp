@@ -7,6 +7,7 @@ define void::service (
 			ensure => 'link',
 			target => "/etc/sv/${srv}",
 			owner => 'root',
+			group => 'root',
 		}
 	} else {
 		tidy { "/var/service/${srv}": }

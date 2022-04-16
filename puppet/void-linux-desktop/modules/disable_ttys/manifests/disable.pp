@@ -7,5 +7,6 @@ define disable_ttys::disable  (
 	file { "/etc/sv/agetty-tty${nr}/down":
 		ensure => 'file',
 		owner => 'root',
+		group => 'root',
 	}
 }

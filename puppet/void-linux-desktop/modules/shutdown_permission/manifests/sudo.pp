@@ -3,6 +3,7 @@ class shutdown_permission::sudo {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/shutdown_permission/sudo_shutdown',
 	}

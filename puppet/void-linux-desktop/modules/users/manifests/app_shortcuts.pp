@@ -14,7 +14,8 @@ class users::app_shortcuts (
     file { "/home/${user}/.local/share/applications/firefox.desktop":
       ensure => 'file',
       backup => false,
-      owner  => 'root',
+      owner  => $user,
+      group  => $user,
       mode   => '0644',
       source => "puppet:///modules/users/${firefox_shortcut}",
     }

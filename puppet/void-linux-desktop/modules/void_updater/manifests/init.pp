@@ -3,6 +3,7 @@ class void_updater {
     ensure => 'file',
     backup => false,
     owner => 'root',
+    group => 'root',
     mode => '0700',
     source => "puppet:///modules/void_updater/void-updater.sh",
   }
@@ -11,6 +12,7 @@ class void_updater {
     ensure => 'file',
     backup => false,
     owner => 'root',
+    group => 'root',
     mode => '0700',
     source => "puppet:///modules/void_updater/sudo_void-updater",
   }

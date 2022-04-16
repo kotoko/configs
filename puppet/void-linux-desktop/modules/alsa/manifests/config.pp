@@ -8,6 +8,7 @@ class alsa::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 
@@ -15,6 +16,7 @@ class alsa::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 

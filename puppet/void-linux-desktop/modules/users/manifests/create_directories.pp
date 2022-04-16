@@ -9,6 +9,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -16,6 +17,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -23,6 +25,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -30,6 +33,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -45,6 +49,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -52,6 +57,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -59,6 +65,7 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -66,6 +73,7 @@ class users::create_directories (
 			ensure => 'file',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0644',
 			source => 'puppet:///modules/users/user-dirs.dirs',
 		}
@@ -74,18 +82,21 @@ class users::create_directories (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 		file { "/home/${user}/.local/share":
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 		file { "/home/${user}/.local/share/applications":
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -94,6 +105,7 @@ class users::create_directories (
 				ensure => 'directory',
 				backup => false,
 				owner => $user,
+				group => $user,
 				mode => '0750',
 			}
 

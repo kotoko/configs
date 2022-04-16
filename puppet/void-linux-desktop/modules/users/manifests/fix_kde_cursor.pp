@@ -11,6 +11,7 @@ class users::fix_kde_cursor (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -18,6 +19,7 @@ class users::fix_kde_cursor (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -25,6 +27,7 @@ class users::fix_kde_cursor (
 			ensure => 'file',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 			source => 'puppet:///modules/users/index.theme',
 		}
@@ -33,6 +36,7 @@ class users::fix_kde_cursor (
 			ensure => 'link',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 			target => '/usr/share/icons/breeze_cursors/cursors',
 		}
@@ -48,18 +52,21 @@ class users::fix_kde_cursor (
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0750',
 	}
 	file { "/etc/skel/.icons/default":
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0750',
 	}
 	file { "/etc/skel/.icons/default/index.theme":
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0750',
 		source => 'puppet:///modules/users/index.theme',
 	}
@@ -67,6 +74,7 @@ class users::fix_kde_cursor (
 		ensure => 'link',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0750',
 		target => '/usr/share/icons/breeze_cursors/cursors',
 	}

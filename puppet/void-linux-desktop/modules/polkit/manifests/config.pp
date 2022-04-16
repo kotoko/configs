@@ -3,6 +3,7 @@ class polkit::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 	}
 
@@ -10,6 +11,7 @@ class polkit::config {
 		ensure => 'directory',
 		backup => false,
 		owner => 'polkitd',
+		group => 'polkitd',
 		mode => '0700',
 	}
 

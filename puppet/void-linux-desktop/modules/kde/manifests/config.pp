@@ -10,6 +10,7 @@ class kde::config {
 		file { $dir:
 			ensure => 'directory',
 			owner => 'root',
+			group => 'root',
 			mode => '0755',
 		}
 	}
@@ -18,6 +19,7 @@ class kde::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/kde/10-agent-startup.sh',
 	}
@@ -26,6 +28,7 @@ class kde::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/kde/10-agent-shutdown.sh',
 	}

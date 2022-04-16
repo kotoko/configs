@@ -46,6 +46,7 @@ class users::psd (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -53,6 +54,7 @@ class users::psd (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -60,6 +62,7 @@ class users::psd (
 			ensure => 'directory',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 		}
 
@@ -67,6 +70,7 @@ class users::psd (
 			ensure => 'file',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0640',
 			source => "puppet:///modules/users/psd/config/psd.conf",
 		}
@@ -75,6 +79,7 @@ class users::psd (
 			ensure => 'link',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 			target => "/home/${user}/.bin/psd/startup.sh",
 		}
@@ -83,6 +88,7 @@ class users::psd (
 			ensure => 'link',
 			backup => false,
 			owner => $user,
+			group => $user,
 			mode => '0750',
 			target => "/home/${user}/.bin/psd/shutdown.sh",
 		}
@@ -92,6 +98,7 @@ class users::psd (
 				ensure => 'file',
 				backup => false,
 				owner => $user,
+				group => $user,
 				mode => '0750',
 				source => "puppet:///modules/users/psd/bin/$bin",
 			}
@@ -105,6 +112,7 @@ class users::psd (
 				ensure => 'file',
 				backup => false,
 				owner => $user,
+				group => $user,
 				mode => '0640',
 				source => "puppet:///modules/users/psd/bin/browsers/$browser",
 			}

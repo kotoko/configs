@@ -3,6 +3,7 @@ class shutdown_permission::polkit {
 		ensure => 'file',
 		backup => false,
 		owner => 'polkitd',
+		group => 'polkitd',
 		mode => '0644',
 		source => 'puppet:///modules/shutdown_permission/52-shutdown.rules',
 	}

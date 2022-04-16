@@ -4,6 +4,7 @@ class daily_programs::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/daily_programs/sudo_veracrypt',
 	}
@@ -18,6 +19,7 @@ class daily_programs::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/daily_programs/use-xinput2.sh',
 	}

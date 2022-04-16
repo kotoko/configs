@@ -3,6 +3,7 @@ class udisks::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'polkitd',
+		group => 'polkitd',
 		mode => '0644',
 		source => 'puppet:///modules/udisks/53-udisks2.rules',
 	}

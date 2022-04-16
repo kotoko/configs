@@ -3,6 +3,7 @@ class backup::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/backup/sudo_backup',
 	}

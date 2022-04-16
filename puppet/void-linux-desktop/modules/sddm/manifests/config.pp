@@ -3,6 +3,7 @@ class sddm::config {
 	file { '/etc/sddm.conf':
 		ensure => 'file',
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 	}
 
@@ -20,6 +21,7 @@ class sddm::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/sddm/Next Theme KDE Wallpaper Material Version.png',
 	}
@@ -28,6 +30,7 @@ class sddm::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/sddm/theme.conf.user',
 	}

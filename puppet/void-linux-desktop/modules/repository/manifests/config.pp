@@ -3,6 +3,7 @@ class repository::config {
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
+		group => 'root',
 		mode => '0644',
 		source => 'puppet:///modules/repository/00-repository-main.conf',
 	}

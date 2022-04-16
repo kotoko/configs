@@ -3,6 +3,7 @@ class tools::config {
 		ensure => 'link',
 		target => '/usr/bin/gpg2',
 		owner => 'root',
+		group => 'root',
 		mode => '0755',
 		backup => false,
 	}
