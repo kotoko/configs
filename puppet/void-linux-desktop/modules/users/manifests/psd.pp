@@ -75,24 +75,6 @@ class users::psd (
 			source => "puppet:///modules/users/psd/config/psd.conf",
 		}
 
-		file { "/home/${user}/.config/plasma-workspace/env/psd.sh":
-			ensure => 'link',
-			backup => false,
-			owner => $user,
-			group => $user,
-			mode => '0750',
-			target => "/home/${user}/.bin/psd/startup.sh",
-		}
-
-		file { "/home/${user}/.config/plasma-workspace/shutdown/psd.sh":
-			ensure => 'link',
-			backup => false,
-			owner => $user,
-			group => $user,
-			mode => '0750',
-			target => "/home/${user}/.bin/psd/shutdown.sh",
-		}
-
 		$psd_bins.each |String $bin| {
 			file { "/home/${user}/.bin/psd/$bin":
 				ensure => 'file',
@@ -129,11 +111,5 @@ class users::psd (
 		File["/home/${user}/.config"] ->
 		File["/home/${user}/.config/psd"] ->
 		File["/home/${user}/.config/psd/psd.conf"]
-
-		File["/home/${user}/.config/plasma-workspace/env"] ->
-		File["/home/${user}/.config/plasma-workspace/env/psd.sh"]
-
-		File["/home/${user}/.config/plasma-workspace/shutdown"] ->
-		File["/home/${user}/.config/plasma-workspace/shutdown/psd.sh"]
 	}
 }
