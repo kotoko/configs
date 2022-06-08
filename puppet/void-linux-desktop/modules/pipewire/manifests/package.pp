@@ -3,6 +3,10 @@ class pipewire::package {
 		ensure => 'installed',
 	}
 
+	void::package { 'easyeffects':
+		ensure => 'installed',
+	}
+
 	# ALSA integration
 	void::package { 'alsa-pipewire':
 		ensure => 'installed',
