@@ -3,10 +3,6 @@ class pipewire::package {
 		ensure => 'installed',
 	}
 
-	void::package { 'easyeffects':
-		ensure => 'installed',
-	}
-
 	void::package { 'helvum':
 		ensure => 'installed',
 	}
