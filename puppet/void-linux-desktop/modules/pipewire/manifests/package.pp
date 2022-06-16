@@ -3,6 +3,10 @@ class pipewire::package {
 		ensure => 'installed',
 	}
 
+	void::package { 'NoiseTorch':
+		ensure => 'installed',
+	}
+
 	void::package { 'helvum':
 		ensure => 'installed',
 	}
