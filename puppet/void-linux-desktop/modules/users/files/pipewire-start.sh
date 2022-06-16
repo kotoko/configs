@@ -5,6 +5,6 @@ if [ "$DUALBOOT" = "void" ]; then
 	mkdir -p "/tmp/$(/usr/bin/id -un)/pipewire-autostart"
 	cd "/tmp/$(/usr/bin/id -un)/pipewire-autostart" || exit 1
 
-	/usr/bin/nohup /usr/bin/pipewire &
-	/usr/bin/nohup /usr/bin/pipewire-pulse &
+	/usr/bin/nohup /usr/bin/nice -n -10 /usr/bin/pipewire &
+	/usr/bin/nohup /usr/bin/nice -n -10 /usr/bin/pipewire-pulse &
 fi
