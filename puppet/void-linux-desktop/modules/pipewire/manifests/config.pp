@@ -15,6 +15,14 @@ class pipewire::config {
 		backup => false,
 	}
 
+	file { '/etc/security/limits.d/95-pipewire.conf':
+		ensure => 'file',
+		source => 'puppet:///modules/pipewire/95-pipewire.conf',
+		owner => 'root',
+		group => 'root',
+		backup => false,
+	}
+
 	File['/etc/alsa/conf.d'] ->
 	File['/etc/alsa/conf.d/50-pipewire.conf'] ->
 	File['/etc/alsa/conf.d/99-pipewire-default.conf']

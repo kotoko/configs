@@ -63,6 +63,7 @@ class setup_desktop (
 	class { 'grub': timeout => $grub_timeout }
 	class { 'network_manager': }
 	class { 'xorg': }
+	class { 'rtkit': }
 	class { 'alsa': }
 	if $apulse {
 		class { 'apulse': }
