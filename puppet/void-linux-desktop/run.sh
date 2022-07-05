@@ -20,7 +20,7 @@ fi
 
 # Install ruby if neccessary.
 if ! command -v ruby >/dev/null 2>&1; then
-	xbps-install --yes ruby
+	xbps-install --yes -A ruby
 fi
 
 # Install puppet if neccessary.
@@ -43,7 +43,6 @@ yes y | gem uninstall puppet
 rm -rf /root/.local/share/gem
 
 # Remove ruby.
-xbps-remove --yes ruby
 xbps-remove --yes -Oo
 
 echo
