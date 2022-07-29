@@ -18,6 +18,7 @@ class kde::package {
 		'kdenlive',
 		'kfind',
 		'kgpg',
+		'kimageformats',
 		'kmag',
 		'kmail',
 		'kmix',
