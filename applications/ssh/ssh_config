@@ -1,0 +1,19 @@
+Host *
+	ForwardAgent no
+	VerifyHostKeyDNS ask
+	CheckHostIP no
+	ControlMaster auto
+	ControlPath ~/.ssh/controlmasters/ssh_mux_%h_%p_%r  # mkdir -p -m 700 ~/.ssh/controlmasters
+	ControlPersist 5m
+	IdentitiesOnly yes
+
+# Cheatsheet of options I use regularly
+#Host example.com
+#	HostName 123.123.123.123
+#	Port 22
+#	User kotoko
+#	IdentityFile ~/.ssh/keys/kotoko.pub
+#
+#	# If we do not care that we connect to different ssh server with the same IP (e.g. virtual machines)
+#	StrictHostKeyChecking no
+#	UserKnownHostsFile /dev/null
