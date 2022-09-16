@@ -13,6 +13,10 @@
 	last = log -1 HEAD
 	st = status
 	sw = switch
+	puhs = push
+
+[pull]
+	ff = only
 
 [filter "tabs-to-spaces"]
 	clean = /usr/bin/env expand --initial --tabs=4
