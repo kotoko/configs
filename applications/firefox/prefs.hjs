@@ -140,3 +140,6 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 
 // Disable smooth scrolling
 user_pref("general.smoothScroll", false);
+
+// Always show scrollback when site is long
+user_pref("widget.gtk.overlay-scrollbars.enabled", false);

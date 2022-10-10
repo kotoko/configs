@@ -59,3 +59,4 @@ user_pref("network.allow-experiments", false);
 user_pref("browser.urlbar.trimURLs", false);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("general.smoothScroll", false);
+user_pref("widget.gtk.overlay-scrollbars.enabled", false);
