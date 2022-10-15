@@ -1,6 +1,7 @@
 class daily_programs::package {
 	$pkgs = [
 		'barrier',
+		'barrier-gui',
 		'calibre',
 		'darktable',
 		'digikam',
