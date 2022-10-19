@@ -35,6 +35,7 @@ class tools::package {
 		'tpm2-tools',
 		'tpm2-totp',
 		'tpm2-tss',
+		'u2f-hidraw-policy',
 		'udftools',
 		'unrar',
 		'unzip',
