@@ -19,6 +19,7 @@ class tools::package {
 		'exiftool',
 		'hfsutils',
 		'inotify-tools',
+		'libfido2',
 		'libjpeg-turbo-tools',
 		'lvm2',
 		'lz4',
