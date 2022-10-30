@@ -35,7 +35,7 @@ class kde::package {
 		'kteatime',
 		'ktorrent',
 		'kwalletmanager',
-		# 'kwave',
+		'kwave',
 		'kwrite',
 		'okular',
 		'plasma-browser-integration',
