@@ -4,7 +4,7 @@ class void::repo_nonfree {
 	}
 
 	exec { 'repo_nonfree_synchronize':
-		command => '/usr/bin/yes y | /usr/bin/xbps-install --sync',
+		command => '/usr/bin/xbps-install --yes --sync',
 	}
 
 	Void::Package['void-repo-nonfree'] ->
