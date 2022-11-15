@@ -16,7 +16,6 @@ class daily_programs::package {
 		'libreoffice-kde',
 		# 'rawtherapee',
 		'scribus',
-		'VeraCrypt',
 		'virtualbox-ose',
 		'vlc',
 	]
