@@ -3,6 +3,10 @@
 
 [push]
 	default = simple
+	autoSetupRemote = true
+
+[pull]
+	ff = only
 
 [alias]
 	br = branch
@@ -14,9 +18,7 @@
 	st = status
 	sw = switch
 	puhs = push
-
-[pull]
-	ff = only
+	praise = blame
 
 [filter "tabs-to-spaces"]
 	clean = /usr/bin/env expand --initial --tabs=4
