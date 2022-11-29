@@ -14,6 +14,7 @@ class daily_programs::package {
 		'libreoffice',
 		'libreoffice-i18n-pl',
 		'libreoffice-kde',
+		'qv4l2',
 		# 'rawtherapee',
 		'scribus',
 		'virtualbox-ose',
