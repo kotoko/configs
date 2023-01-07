@@ -23,18 +23,18 @@ class pipewire::config {
 		backup => false,
 	}
 
-	file { '/usr/bin/void-pipewire-launcher':
-		ensure => 'file',
-		source => 'puppet:///modules/pipewire/void-pipewire-launcher',
+	file { '/etc/xdg/autostart/pipewire.desktop':
+		ensure => 'link',
+		target => '/usr/share/applications/pipewire.desktop',
 		owner => 'root',
 		group => 'root',
-		mode => '0755',
+		mode => '0644',
 		backup => false,
 	}
 
-	file { '/etc/xdg/autostart/pipewire.desktop':
-		ensure => 'file',
-		source => 'puppet:///modules/pipewire/pipewire.desktop',
+	file { '/etc/xdg/autostart/pipewire-pulse.desktop':
+		ensure => 'link',
+		target => '/usr/share/applications/pipewire-pulse.desktop',
 		owner => 'root',
 		group => 'root',
 		mode => '0644',
@@ -47,5 +47,6 @@ class pipewire::config {
 
 	File['/etc/xdg'] ->
 	File['/etc/xdg/autostart'] ->
-	File['/etc/xdg/autostart/pipewire.desktop']
+	File['/etc/xdg/autostart/pipewire.desktop'] ->
+	File['/etc/xdg/autostart/pipewire-pulse.desktop']
 }

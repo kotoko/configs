@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mkdir -p "/tmp/$(/usr/bin/id -un)/pipewire-autostart"
-cd "/tmp/$(/usr/bin/id -un)/pipewire-autostart" || exit 1
-
-/usr/bin/nohup /usr/bin/pipewire &
-/usr/bin/nohup /usr/bin/pipewire-pulse &
-
