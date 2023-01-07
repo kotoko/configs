@@ -99,7 +99,6 @@ class setup_desktop (
 		groups => $user_groups,
 		directories => $user_directories,
 		apulse => $apulse,
-		pipewire_autostart => $pipewire,
 		stage => configuration,
 	}
 }

@@ -4,6 +4,7 @@ class kde::config {
 		'/etc/xdg/plasma-workspace',
 		'/etc/xdg/plasma-workspace/env',
 		'/etc/xdg/plasma-workspace/shutdown',
+		'/etc/xdg/autostart',
 	]
 
 	$dirs.each |String $dir| {
@@ -32,6 +33,9 @@ class kde::config {
 		mode => '0644',
 		source => 'puppet:///modules/kde/10-agent-shutdown.sh',
 	}
+
+	File['/etc/xdg'] ->
+	File['/etc/xdg/autostart']
 
 	File['/etc/xdg'] ->
 	File['/etc/xdg/plasma-workspace'] ->
