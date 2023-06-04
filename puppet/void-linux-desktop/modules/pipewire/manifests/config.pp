@@ -41,6 +41,15 @@ class pipewire::config {
 		backup => false,
 	}
 
+	file { '/etc/xdg/autostart/wireplumber.desktop':
+		ensure => 'link',
+		target => '/usr/share/applications/wireplumber.desktop',
+		owner => 'root',
+		group => 'root',
+		mode => '0644',
+		backup => false,
+	}
+
 	File['/etc/alsa/conf.d'] ->
 	File['/etc/alsa/conf.d/50-pipewire.conf'] ->
 	File['/etc/alsa/conf.d/99-pipewire-default.conf']
@@ -48,5 +57,6 @@ class pipewire::config {
 	File['/etc/xdg'] ->
 	File['/etc/xdg/autostart'] ->
 	File['/etc/xdg/autostart/pipewire.desktop'] ->
-	File['/etc/xdg/autostart/pipewire-pulse.desktop']
+	File['/etc/xdg/autostart/pipewire-pulse.desktop'] ->
+	File['/etc/xdg/autostart/wireplumber.desktop']
 }
