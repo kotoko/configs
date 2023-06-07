@@ -32,6 +32,14 @@ class pipewire::config {
 		backup => false,
 	}
 
+	file { '/etc/pipewire':
+		ensure => 'directory',
+		backup => false,
+		owner => 'root',
+		group => 'root',
+		mode => '0755',
+	}
+
 	file { '/etc/pipewire/pipewire.conf.d':
 		ensure => 'directory',
 		backup => false,
@@ -66,6 +74,7 @@ class pipewire::config {
 	File['/etc/xdg/autostart'] ->
 	File['/etc/xdg/autostart/pipewire.desktop']
 
+	File['/etc/pipewire'] ->
 	File['/etc/pipewire/pipewire.conf.d'] ->
 	File['/etc/pipewire/pipewire.conf.d/10-wireplumber.conf'] ->
 	File['/etc/pipewire/pipewire.conf.d/20-pipewire-pulse.conf']
