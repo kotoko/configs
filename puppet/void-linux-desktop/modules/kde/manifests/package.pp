@@ -9,7 +9,7 @@ class kde::package {
 		'filelight',
 		'k3b',
 		'kaddressbook',
-		# 'kamoso',
+		'kamoso',
 		'kexi',
 		'kcalc',
 		'kcharselect',
