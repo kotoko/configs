@@ -21,7 +21,6 @@ class kde::package {
 		'kimageformats',
 		'kmag',
 		'kmail',
-		'kmix',
 		'kolourpaint',
 		'kompare',
 		'konsole',
