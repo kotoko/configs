@@ -42,3 +42,4 @@ Things to do after reboot:
 
 * official livecd - [voidlinux-iso](https://alpha.de.repo.voidlinux.org/live/current/)
 * my customized livecd - [voidlinux-iso-extra](https://github.com/kotoko/voidlinux-iso-extra)
+* official documentation - [docs.voidlinux.org](https://docs.voidlinux.org/)
