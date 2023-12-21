@@ -13,6 +13,7 @@ class tools::package {
 		'fuse-exfat',
 		'fuse-sshfs',
 		'git',
+		'gnupg',
 		'gnupg2',
 		'gptfdisk',
 		'gzip',
