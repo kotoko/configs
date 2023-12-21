@@ -38,6 +38,7 @@ class kde::package {
 		'kwrite',
 		'okular',
 		'plasma-browser-integration',
+		'screenkey',
 		'skanlite',
 		'spectacle',
 		'upower',
