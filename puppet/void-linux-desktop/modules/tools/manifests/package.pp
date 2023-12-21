@@ -56,6 +56,4 @@ class tools::package {
 		}
 	}
 
-	Class['void::repo_nonfree'] ->
-	Void::Package['unrar']
 }
