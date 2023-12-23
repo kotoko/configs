@@ -2,6 +2,7 @@ class intel_gpu {
 	$pkgs = [
 		'mesa-dri',
 		'vulkan-loader',
+		'Vulkan-Tools',
 		'mesa-vulkan-intel',
 		'intel-video-accel',
 	]
