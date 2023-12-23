@@ -89,6 +89,7 @@ class setup_desktop (
 		class { 'intel_gpu': }  # Only intels proccessors!
 	}
 	class { 'preload': }
+	class { 'sysctl': }
 	class { 'java': }
 	class { 'void_updater': }
 	class { 'ssh': enable => $enable_ssh }
