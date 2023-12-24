@@ -10,8 +10,8 @@ class setup_desktop (
 	if $cpu != '' and $cpu != 'intel' {
 		fail('Unrecognized $cpu parameter! (Should be \'intel\' or empty string).')
 	}
-	if $gpu != '' and $gpu != 'intel' {
-		fail('Unrecognized $gpu parameter! (Should be \'intel\' or empty string).')
+	if $gpu != '' and $gpu != 'intel' and $gpu != 'nvidia390' {
+		fail('Unrecognized $gpu parameter! (Should be \'intel\' or or \'nvidia390\' or empty string).')
 	}
 	if $sound != 'alsa' and $sound != 'pipewire' {
 		fail('Unrecognized $sound parameter! (Should be \'alsa\' or \'pipewire\').')
@@ -87,6 +87,9 @@ class setup_desktop (
 	}
 	if $gpu == 'intel' {
 		class { 'intel_gpu': }  # Only intels proccessors!
+	}
+	if $gpu == 'nvidia390' {
+		class { 'nvidia390_gpu': }  # Only old nvidia cards!
 	}
 	class { 'preload': }
 	class { 'sysctl': }
