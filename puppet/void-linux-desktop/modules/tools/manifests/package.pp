@@ -31,6 +31,7 @@ class tools::package {
 		'lz4',
 		'makepasswd',
 		'nano',
+		'neofetch',
 		'ntfs-3g',
 		'p7zip',
 		'rsync',
