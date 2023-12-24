@@ -27,6 +27,7 @@ class tools::package {
 		'inotify-tools',
 		'libfido2',
 		'libjpeg-turbo-tools',
+		'lm_sensors',
 		'lvm2',
 		'lz4',
 		'makepasswd',
