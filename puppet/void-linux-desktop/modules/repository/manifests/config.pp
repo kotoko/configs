@@ -16,4 +16,13 @@ class repository::config {
 		mode => '0644',
 		source => 'puppet:///modules/repository/10-repository-nonfree.conf',
 	}
+
+	file { '/etc/xbps.d/11-repository-multilib.conf':
+		ensure => 'file',
+		backup => false,
+		owner => 'root',
+		group => 'root',
+		mode => '0644',
+		source => 'puppet:///modules/repository/11-repository-multilib.conf',
+	}
 }
