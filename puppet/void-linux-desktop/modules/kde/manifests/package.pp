@@ -14,6 +14,7 @@ class kde::package {
 		'kcalc',
 		'kcharselect',
 		'kcolorchooser',
+		'kcron',
 		'kdeconnect',
 		'kdenlive',
 		'kfind',
