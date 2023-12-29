@@ -50,6 +50,7 @@ class kde::package {
 		'yakuake',
 		'xdg-desktop-portal',
 		'xdg-desktop-portal-kde',
+		'xorg-server-xwayland',
 	]
 
 	void::package { 'kde5':
