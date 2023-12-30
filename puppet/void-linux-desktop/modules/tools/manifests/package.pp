@@ -4,6 +4,7 @@ class tools::package {
 		'acpi',
 		'cdrskin',
 		'clinfo',
+		'cpuinfo',
 		'cryptsetup',
 		'ddrescue',
 		'dmidecode',
