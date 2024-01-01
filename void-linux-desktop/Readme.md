@@ -25,9 +25,9 @@ I am assuming that during running this script computer is connected to the inter
 4. Login as `root`.
 5. Copy files to the computer.
     * You can download repository with git:
-        - `xbps-install -S git`
+        - `xbps-install -S -A git`
         - `git clone "https://github.com/kotoko/configs.git" /root/configs`
-        - `cd /root/configs`
+        - `cd /root/configs/void-linux-desktop`
     * Edit users in the file `manifests/init.pp`:
         - `xbps-install -S nano`
         - `nano manifests/init.pp`
