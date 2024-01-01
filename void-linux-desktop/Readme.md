@@ -24,7 +24,13 @@ I am assuming that during running this script computer is connected to the inter
 3. Go to tty2: `Ctrl` + `Alt` + `F2`. (It's important to not be on tty1.)
 4. Login as `root`.
 5. Copy files to the computer.
-    * Edit users in the file `manifests/init.pp`.
+    * You can download repository with git:
+        - `xbps-install -S git`
+        - `git clone "https://github.com/kotoko/configs.git" /root/configs`
+        - `cd /root/configs`
+    * Edit users in the file `manifests/init.pp`:
+        - `xbps-install -S nano`
+        - `nano manifests/init.pp`
 6. Run script: `bash run.sh 2>&1 | tee out.log`.
     * During installation of sddm it may switch your screen to something else. You can go back to the terminal: `Ctrl` + `Alt` + `F2`.
     * When finished you can read log from file `out.log`.
@@ -37,9 +43,10 @@ Things to do after reboot:
 * remove user `void`
 * install additional drivers (?),
 * remove copied files (?),
+* configure ssh server (?),
 
 ## See also
 
-* official livecd - [voidlinux-iso](https://alpha.de.repo.voidlinux.org/live/current/)
+* official livecd - [voidlinux-iso](https://repo-default.voidlinux.org/live/current/)
 * my customized livecd - [voidlinux-iso-extra](https://github.com/kotoko/voidlinux-iso-extra)
 * official documentation - [docs.voidlinux.org](https://docs.voidlinux.org/)
