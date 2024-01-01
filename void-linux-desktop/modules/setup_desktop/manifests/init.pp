@@ -83,13 +83,14 @@ class setup_desktop (
 	class { 'daily_programs': }
 	class { 'tlp': }
 	if $cpu == 'intel' {
-		class { 'thermald': }  # Only intels proccessors!
+		class { 'thermald': }
+		class { 'intel_cpu': }
 	}
 	if $gpu == 'intel' {
-		class { 'intel_gpu': }  # Only intels proccessors!
+		class { 'intel_gpu': }
 	}
 	if $gpu == 'nvidia390' {
-		class { 'nvidia390_gpu': }  # Only old nvidia cards!
+		class { 'nvidia390_gpu': }
 	}
 	class { 'preload': }
 	class { 'sysctl': }
