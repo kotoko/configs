@@ -8,7 +8,7 @@ class ssh::config {
 		source => 'puppet:///modules/ssh/sshguard.conf',
 	}
 
-	file { '/etc/ssh/sshd_config':
+	file { '/etc/ssh/sshd_config.d/local.conf':
 		ensure => 'file',
 		backup => false,
 		owner => 'root',
