@@ -44,6 +44,7 @@ class kde::package {
 		'kwrite',
 		'okular',
 		'plasma-browser-integration',
+		'plasma-vault',
 		'screenkey',
 		'skanlite',
 		'spectacle',

@@ -5,6 +5,7 @@ class tools::package {
 		'cdrskin',
 		'clinfo',
 		'cpuinfo',
+		'cryfs',
 		'cryptsetup',
 		'ddrescue',
 		'dmidecode',
