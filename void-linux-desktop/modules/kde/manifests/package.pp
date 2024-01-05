@@ -10,6 +10,7 @@ class kde::package {
 		'k3b',
 		'kaddressbook',
 		'kamoso',
+		'kasts',
 		'kexi',
 		'kcalc',
 		'kcharselect',
