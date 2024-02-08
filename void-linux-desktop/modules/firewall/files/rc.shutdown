@@ -3,6 +3,6 @@
 # This is run by runit in stage 3 after the services are stopped
 # (see /etc/runit/3).
 
-ipset save > /etc/ipset/ipset.rules
+ipset save -output save > /etc/ipset/ipset.rules
 iptables-save -c > /etc/iptables/iptables.rules
 ip6tables-save -c > /etc/iptables/ip6tables.rules
