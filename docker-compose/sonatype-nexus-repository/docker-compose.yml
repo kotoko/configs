@@ -16,4 +16,6 @@ services:
 
 volumes:
   data:
+    external: true
   blobs:
+    external: true
