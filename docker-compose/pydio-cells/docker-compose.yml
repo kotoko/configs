@@ -8,8 +8,6 @@
 #   docker volume create pydio-db
 #   docker volume create pydio-datasources
 
-# During database configuration pass 'db' as database hostname. Type database root username and password.
-
 version: '3.8'
 
 services:
@@ -21,10 +19,10 @@ services:
     volumes:
       - 'pydio:/var/cells'
       - 'pydio-datasources:/var/cells/data'
+      - './install-config.yml:/pydio/config/install.yml:ro'
     environment:
-      DATABASE_NAME: 'cells'
-      DATABASE_HOST: 'db'
-      DATABASE_PASSWORD: 'pydio'
+      CELLS_INSTALL_YAML: '/pydio/config/install.yml'
+      CELLS_SITE_NO_TLS: '1'
     stop_grace_period: '60s'
     restart: 'always'
 
