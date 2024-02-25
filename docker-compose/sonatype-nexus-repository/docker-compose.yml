@@ -1,21 +1,30 @@
-# https://hub.docker.com/r/sonatype/nexus3/tags
-# https://github.com/sonatype/docker-nexus3
+# Links:
+#   https://hub.docker.com/r/sonatype/nexus3/tags
+#   https://github.com/sonatype/docker-nexus3
+
+# Create volumes before first run:
+#   docker volume create nexus
+#   docker volume create nexus-blobs
+
+# Get admin password:
+#   docker exec nexus /bin/cat /nexus-data/admin.password
 
 version: '3.8'
 
 services:
   nexus:
+    container_name: nexus
     image: 'docker.io/sonatype/nexus3:3.65.0'
     ports:
       - '8081:8081/tcp'
     volumes:
-      - 'data:/nexus-data'
-      - 'blobs:/nexus-data/blobs/'
+      - 'nexus:/nexus-data'
+      - 'nexus-blobs:/nexus-data/blobs/'
     stop_grace_period: '180s'
     restart: 'always'
 
 volumes:
-  data:
+  nexus:
     external: true
-  blobs:
+  nexus-blobs:
     external: true

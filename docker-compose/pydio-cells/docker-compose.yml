@@ -1,16 +1,26 @@
-# https://hub.docker.com/r/pydio/cells/tags
-# https://hub.docker.com/_/mysql/tags
+# Links:
+#   https://hub.docker.com/r/pydio/cells/tags
+#   https://hub.docker.com/_/mysql/tags
+#   https://pydio.com
+
+# Create volumes before first run:
+#   docker volume create pydio
+#   docker volume create pydio-db
+#   docker volume create pydio-datasources
+
+# During database configuration pass 'db' as database hostname. Type database root username and password.
 
 version: '3.8'
 
 services:
   pydio:
+    container_name: 'pydio'
     image: 'docker.io/pydio/cells:4.3.5'
     ports:
       - '8080:8080/tcp'
     volumes:
       - 'pydio:/var/cells'
-      - 'datasources:/var/cells/data'
+      - 'pydio-datasources:/var/cells/data'
     environment:
       DATABASE_NAME: 'cells'
       DATABASE_HOST: 'db'
@@ -19,6 +29,7 @@ services:
     restart: 'always'
 
   db:
+    container_name: 'pydio-db'
     image: 'docker.io/library/mysql:8'
     environment:
       MYSQL_ROOT_PASSWORD: 'correct horse battery staple'
@@ -27,14 +38,14 @@ services:
       MYSQL_PASSWORD: 'pydio'
     command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
     volumes:
-      - 'db:/var/lib/mysql'
+      - 'pydio-db:/var/lib/mysql'
     stop_grace_period: '90s'
     restart: 'always'
 
 volumes:
-  datasources:
-    external: true
   pydio:
     external: true
-  db:
+  pydio-db:
+    external: true
+  pydio-datasources:
     external: true
