@@ -11,6 +11,7 @@ class kde::package {
 		'kaddressbook',
 		'kamoso',
 		'kasts',
+		'kdialog',
 		'kexi',
 		'kcalc',
 		'kcharselect',
