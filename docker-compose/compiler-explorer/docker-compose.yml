@@ -1,0 +1,32 @@
+# Links:
+#   https://compiler-explorer.com
+#   https://github.com/compiler-explorer/compiler-explorer
+#   https://github.com/compiler-explorer/infra
+
+# Make sure you have at least 70-80 GB of free space on disk. You can change
+# this requirement by adding/removing compilers.
+
+# You can modify installed compilers by editing file 'install-stuff.sh'.
+# If you add something you must also edit/create coresponding configuration file
+# in directory 'compiler-explorer-etc-config'. Check examples here:
+#   https://github.com/compiler-explorer/compiler-explorer/tree/main/etc/config
+
+# You can specify git commit/branch (in other words: version) of compiler-explorer
+# by specyfing variable 'COMPILER_EXPLORER_COMMIT'. If variable is not specified
+# a hardcoded commit is used instead (see: intall-stuff.sh).
+
+version: '3.8'
+
+services:
+  compiler-explorer:
+    build:
+      context: './'
+      dockerfile: 'Dockerfile'
+    image: 'compiler-explorer:custom'
+#    environment:
+#      COMPILER_EXPLORER_COMMIT: 'main'
+    container_name: 'compiler-explorer'
+    ports:
+      - '10240:10240'
+    restart: 'always'
+    stop_grace_period: "20s"
