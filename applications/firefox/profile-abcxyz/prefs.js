@@ -60,3 +60,5 @@ user_pref("browser.urlbar.trimURLs", false);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("general.smoothScroll", false);
 user_pref("widget.gtk.overlay-scrollbars.enabled", false);
+user_pref("browser.gesture.swipe.left", "");
+user_pref("browser.gesture.swipe.right", "");
