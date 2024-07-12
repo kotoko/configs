@@ -27,7 +27,6 @@ class kde::package {
 		'openexr',
 		'libraw',
 		'kmag',
-		'kmail',
 		'kolourpaint',
 		'kompare',
 		'konsole',
