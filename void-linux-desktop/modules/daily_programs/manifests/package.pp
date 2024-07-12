@@ -17,6 +17,8 @@ class daily_programs::package {
 		'qv4l2',
 		# 'rawtherapee',
 		'scribus',
+		'thunderbird',
+		'thunderbird-i18n-pl',
 		'virtualbox-ose',
 		'vlc',
 	]
