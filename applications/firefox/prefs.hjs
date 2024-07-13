@@ -147,3 +147,6 @@ user_pref("widget.gtk.overlay-scrollbars.enabled", false);
 // Disable swipe left/right gestures
 user_pref("browser.gesture.swipe.left", "");
 user_pref("browser.gesture.swipe.right", "");
+
+// Disable ads
+user_pref("dom.private-attribution.submission.enabled", false);
