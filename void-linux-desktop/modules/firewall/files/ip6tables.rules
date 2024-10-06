@@ -6,12 +6,14 @@
 :icmp-echo - [0:0]
 :ipv6 - [0:0]
 :kde-connect - [0:0]
+:ktorrent - [0:0]
 :ssh - [0:0]
 :ssh-dos - [0:0]
 [0:0] -A INPUT -i lo -j ACCEPT
 [0:0] -A INPUT -j ipv6
 [0:0] -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 [0:0] -A INPUT -j kde-connect
+[0:0] -A INPUT -j ktorrent
 [0:0] -A INPUT -p udp -m set --match-set ssdp6 dst,dst -j ACCEPT
 [0:0] -A INPUT -p tcp -m tcp --dport 22 -j ssh
 [0:0] -A INPUT -j DROP
@@ -50,6 +52,9 @@
 [0:0] -A ipv6 -s fe80::/10 -p udp -m udp --sport 547 --dport 546 -j ACCEPT
 [0:0] -A kde-connect -p udp -m udp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
 [0:0] -A kde-connect -p tcp -m tcp --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
+[0:0] -A ktorrent -p udp -m udp --dport 8881 -j ACCEPT
+[0:0] -A ktorrent -p udp -m udp --dport 7881 -j ACCEPT
+[0:0] -A ktorrent -p tcp -m tcp --dport 6881 -j ACCEPT
 [0:0] -A ssh -m set --match-set sshguard6 src -j DROP
 [0:0] -A ssh -j ssh-dos
 [0:0] -A ssh -j ACCEPT
