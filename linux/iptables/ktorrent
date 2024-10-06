@@ -1,0 +1,13 @@
+# ipv4
+iptables -N ktorrent
+iptables -A INPUT -j ktorrent
+iptables -A ktorrent -p udp -m udp --dport 8881 -j ACCEPT
+iptables -A ktorrent -p udp -m udp --dport 7881 -j ACCEPT
+iptables -A ktorrent -p tcp -m tcp --dport 6881 -j ACCEPT
+
+# ipv6
+ip6tables -N ktorrent
+ip6tables -A INPUT -j ktorrent
+ip6tables -A ktorrent -p udp -m udp --dport 8881 -j ACCEPT
+ip6tables -A ktorrent -p udp -m udp --dport 7881 -j ACCEPT
+ip6tables -A ktorrent -p tcp -m tcp --dport 6881 -j ACCEPT
