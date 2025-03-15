@@ -18,7 +18,7 @@ case "${ACTION}" in
                 fi
 
                 for s in ${DHCP4_NTP_SERVERS}; do
-                        echo "server ${s} iburst" >> "${CHRONY_ADDTIONAL_DIR}/${CONNECTION_UUID}.sources"
+                        echo "server ${s} iburst" > "${CHRONY_ADDTIONAL_DIR}/${CONNECTION_UUID}.sources"
                         break  # use only first ntp server from dhcp -> avoid potential spam of servers
                 done
 
