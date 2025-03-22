@@ -1,6 +1,7 @@
 class kde::package {
 	$pkgs = [
 		'ark',
+		'breeze-qt5',
 		'colord',
 		'colord-kde',
 		'dolphin',
