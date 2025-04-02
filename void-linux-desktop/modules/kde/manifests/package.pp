@@ -22,7 +22,6 @@ class kde::package {
 		'kdenlive',
 		'kfind',
 		'kgpg',
-		'kimageformats',
 		'libavif',
 		'libheif',
 		'openexr',
