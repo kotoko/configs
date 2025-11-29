@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+
+import sys
+import base64
+import subprocess
+import tempfile
+from datetime import datetime
+from email.message import EmailMessage
+import smtplib
+import ssl
+import time
+
+
+def downloadHashesFromLdap():
+	ldapDumpStdout = subprocess.check_output(["/bin/bash", "/root/dump-ldap-hashes.sh"]).decode("utf-8")
+
+	dn = None
+	mail = None
+	userPassword = None
+	data = [] # dn, mail, hash
+	for line in ldapDumpStdout.split("\n"):
+		line = line.strip()
+		if line.startswith("dn:"):
+			dn = line[len("dn:"):]
+		elif line.startswith("mail:"):
+			mail = line[len("mail:"):]
+		elif line.startswith("userPassword::"):
+			userPassword = line[len("userPassword::"):]
+			userPassword = base64.b64decode(userPassword).decode("utf-8")
+		elif line.startswith("userPassword:"):
+			userPassword = line[len("userPassword:"):]
+
+		if dn is not None and mail is not None and userPassword is not None:
+			data.append( {"dn":dn, "mail":mail, "hash":userPassword} )
+
+			dn = None
+			mail = None
+			userPassword = None
+
+	return data
+
+
+def extractUsernames(data):
+	data2 = []
+	for user in data:
+		dn = user["dn"]
+		username = dn.split(",")[0]
+		username = username[len("uid="):]
+		data2.append( {"dn":user["dn"], "mail":user["mail"], "hash":user["hash"], "username":username} )
+	return data2
+
+
+def convertHashesFromLdapToJohn(data):
+	data2 = []
+	for user in data:
+		h = user["hash"]
+		username = user["username"]
+
+		if '{PBKDF2-SHA512}' in h or '{pbkdf2-sha512}' in h:
+			hashvals = h.split('}')[1]
+			iterations, b64salt, b64hash = hashvals.split('$')
+			b64salt = b64salt.replace('.', '+') + '==='
+			b64hash = b64hash.replace('.', '+') + '==='
+			h2 = username + ':' + '$pbkdf2-hmac-sha512$' + iterations + '.' + base64.b64decode(b64salt).hex() + '.' + base64.b64decode(b64hash).hex()
+		elif '{SHA256}' in h or '{sha256}' in h:
+			hhash = base64.b64decode(h.split('}')[1]).hex()
+			h2 = username + ":$SHA256$" + hhash
+		elif '{SHA512}' in h or '{sha512}' in h:
+			hhash = base64.b64decode(h.split('}')[1]).hex()
+			h2 = user + ":$SHA512$" + hhash
+		elif '{CRYPT}' in h or '{crypt}' in h:
+			h2 = h.replace('{CRYPT}', '')
+			h2 = h2.replace('{crypt}', '')
+		else:
+			h2 = h
+
+		data2.append( {"dn":user["dn"], "mail":user["mail"], "johnHash":h2, "username":user["username"]} )
+	return data2
+
+
+def generatePasswdForJohn(data, tmpDir):
+	with open(tmpDir + "/passwd.txt", "w") as f:
+		for user in data:
+			f.write(user["johnHash"] + "\n")
+
+
+def getCrackResults(data, tmpDir):
+	results = []
+	for user in data:
+		username = user["username"]
+		johnHash = user["johnHash"]
+
+		print(f"Reading results for {username}...", end="")
+
+		with open(f"/{tmpDir}/{username}.txt", "w") as f:
+			f.write(johnHash + "\n")
+
+		johnStdout = subprocess.check_output(["/usr/sbin/john", "--show", f"/{tmpDir}/{username}.txt"]).decode("utf-8")
+		johnStdout = johnStdout.strip()
+
+		if johnStdout.endswith("0 left"):
+			p = johnStdout.split("\n", 1)[0][len("?:"):].rstrip("\r\n")
+			results.append( {"username":username, "plainPassword":p} )
+			print(f" {p}", end="")
+		else:
+			results.append( {"username":username, "plainPassword":None} )
+
+		print()
+
+	return results
+
+
+def craftEmail(to, cc, content='', subject=''):
+	msg = EmailMessage()
+	msg['From'] = 'password@mail.example.com'
+	msg['To'] = to
+	msg['CC'] = ",".join(cc)
+	msg['Subject'] = subject
+	msg.set_content(content)
+	return msg
+
+
+def connectMail(mailCfg):
+	smtp_send = smtplib.SMTP(host=mailCfg['host'], port=mailCfg['port'], timeout=90)
+	if mailCfg['ssl']:
+		context = ssl.create_default_context()
+		smtp_send.starttls(context=context)
+	smtp_send.login(mailCfg['login'], mailCfg['password'])
+	return smtp_send
+
+
+def sendNotifications(results, data):
+	cfg = {
+		'mail': {
+			'ssl': True,
+			'host': 'mail.example.com',
+			'port': 587,
+			'login': 'XXX_PLACEHOLDER_LOGIN_XXX',
+			'password': 'XXX_PLACEHOLDER_PASSWORD_XXX',
+		},
+		"cc": ["admin@mail.example.com", "admin2@mail.example.com"],
+	}
+
+	print("Generating emails...")
+
+	ldapMails = {}
+	for d in data:
+		ldapMails[d["username"]] = d["mail"]
+
+	# Stwórz listę mejli
+	msgs = []
+	for result in results:
+		username = result["username"]
+		plainPassword = result["plainPassword"]
+		if plainPassword is not None:
+			subject = f"Hasło {plainPassword} użytkownika {username} wyciekło"
+			text = f"""
+Twoje hasło {plainPassword} występuje na liście haseł, które wyciekły do internetu. Proszę je zmienić. Hasło można zmienić na stronie https://password.example.com . Na dole strony jest prosty miernik siły hasła, który może pomóc w wymyślaniu nowego hasła.
+
+Administrator
+""".strip()
+			msg = craftEmail(to=ldapMails[username], cc=cfg["cc"], content=text, subject=subject)
+			msgs.append(msg)
+
+	# Wyślij mail-e
+	print("Sending emails...")
+	smtp_send = connectMail(cfg['mail'])
+	errors = []
+	for m in msgs:
+		try:
+			smtp_send.send_message(m)
+		except Exception as e:
+			errors.append(str(e))
+		time.sleep(0.1)
+
+	# Wyślij mail-e z błędami
+	if errors != []:
+		for recipient in cfg['cc']:
+			try:
+				content = '\n'.join(errors)
+				msg = craftEmail(to=recipient, cc=[], content=content, subject='Błędy powiadomień o hasłach które wyciekły')
+				smtp_send.send_message(msg)
+			except:
+				pass
+
+	smtp_send.quit()
+
+
+if __name__ == "__main__":
+	timestamp = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+
+	with tempfile.TemporaryDirectory() as tmpDir:
+		data = downloadHashesFromLdap()
+		data = extractUsernames(data)
+		data = convertHashesFromLdapToJohn(data)
+		generatePasswdForJohn(data, tmpDir)
+		results = getCrackResults(data, tmpDir)
+
+		with open(f"/tmp/results-{timestamp}.txt", "w") as f:
+			for result in results:
+				if result["plainPassword"] is not None:
+					f.write(result["username"] + "," + result["plainPassword"] + "\n")
+
+		sendNotifications(results, data)

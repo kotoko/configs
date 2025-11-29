@@ -1,0 +1,24 @@
+services:
+  ldap-check-passwords:
+    container_name: 'ldap-check-passwords'
+    image: 'ldap-check-passwords:2999-01-01'
+    environment:
+      MAIL_LOGIN: 'password@mail.example.com'
+      MAIL_PASSWORD: 'correct horse battery staple'
+      LDAP_PASSWORD: '123456'
+      JOHN_CPUS: '3'
+    volumes:
+      - './data:/root/.john:rw'
+    restart: 'always'
+    stop_grace_period: '1s'
+    shm_size: '256m'
+    deploy:
+      resources:
+        limits:
+          memory: '256m'
+          cpus: '3'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '256m'
+        max-file: '2'
