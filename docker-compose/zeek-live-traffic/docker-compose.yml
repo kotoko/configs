@@ -1,0 +1,44 @@
+# Links:
+#   https://hub.docker.com/r/zeek/zeek/tags
+#   https://docs.zeek.org/en/v8.1.1/
+
+# Create directories before first run:
+#   mkdir -p logs/
+
+# Optionally rotate logs
+# 1. Update paths in:
+#   sudo vim ./logrotate.conf
+# 2. Set permissions:
+#   sudo chown root:root ./logrotate.conf
+# 3. Rotate logs:
+#   sudo bash ./rotate-logs.sh
+
+services:
+  zeek-live-traffic:
+    container_name: 'zeek-live-traffic'
+    image: 'docker.io/zeek/zeek:8.1.1'
+    command: [ '/usr/local/zeek/bin/zeek', '--iface', 'enp3s0', '--no-checksums' ]
+    working_dir: '/data/logs'
+    volumes:
+      - './logs:/data/logs:rw'
+    cap_add:
+      - 'net_raw'
+      - 'net_admin'
+    network_mode: 'host'
+    restart: 'always'
+    stop_grace_period: '10s'
+    shm_size: '256m'
+    deploy:
+      resources:
+        limits:
+          memory: '768m'
+          cpus: '2'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '256m'
+        max-file: '2'
+    ulimits:
+      nofile:
+        hard: '1048576'
+        soft: '1048576'
